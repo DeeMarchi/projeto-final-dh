@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+@import url('./geral.css');
 
 body {
     font-family: 'Comfortaa', cursive;
     background-color: #f2f2f2;
 }
 
-.btn-cadastro {
-    width: 100%;
+.btn-padrao {
     color: black;
     background-color: #1fe0ec;
 }
