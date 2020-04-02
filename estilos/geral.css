@@ -4,3 +4,9 @@ body {
     font-family: 'Comfortaa', cursive;
     background-color: #f2f2f2;
 }
+
+.btn-cadastro {
+    width: 100%;
+    color: black;
+    background-color: #1fe0ec;
+}
