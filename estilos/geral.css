@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
-@import url('./geral.css');
 
 body {
     font-family: 'Comfortaa', cursive;
@@ -9,4 +8,8 @@ body {
 .btn-padrao {
     color: black;
     background-color: #1fe0ec;
+}
+
+.max-width-720p {
+    max-width: 720px;
 }
