@@ -13,3 +13,7 @@ body {
 .max-width-720p {
     max-width: 720px;
 }
+
+.vh-75 {
+    height: 75vh;
+}
