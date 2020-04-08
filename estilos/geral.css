@@ -25,3 +25,8 @@ body {
 .header-bg {
     background-color: #0097a7;
 }
+
+.checkbox-lg {
+    height: 1.25rem;
+    width: 1.25rem;
+}
