@@ -5,3 +5,4 @@ compartilhar-comentario.svg		| https://www.flaticon.com/br/icone-gratis/comparti
 seguir.svg				| https://www.flaticon.com/br/icone-gratis/seguidores_748004?term=follow&page=1&position=4
 deixar-de-seguir.svg			| https://www.flaticon.com/br/icone-gratis/deixar-de-seguir_2701228
 excluir.svg				| https://www.flaticon.com/br/icone-gratis/excluir_709519
+user.svg				| https://www.flaticon.com/free-icon/user_121693
