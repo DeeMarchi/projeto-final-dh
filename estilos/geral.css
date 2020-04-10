@@ -24,6 +24,7 @@ body {
 
 .header-bg {
     background-color: #0097a7;
+    color: white;
 }
 
 .checkbox-lg {
@@ -34,4 +35,9 @@ body {
 .card-resumo-roteiro {
     background-color: #267780;
     color: white;
+}
+
+.header-icone {
+    height: 4rem;
+    width: 4rem;
 }
