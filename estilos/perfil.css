@@ -1,0 +1,13 @@
+.roteiro-dias {
+    background-color: #267780;
+    color: #FFF;
+}
+
+.roteiro a{
+    color: black;
+}
+
+.descricao{
+    max-width: 940px;
+    height: 150px;
+}
