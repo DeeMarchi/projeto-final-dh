@@ -10,3 +10,9 @@
 .descricao{
     max-width: 940px;
 }
+
+.btn-info{
+    background-color: #1FE0EC;
+    border-color: #1FE0EC;
+    color: #000;
+}
