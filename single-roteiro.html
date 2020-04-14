@@ -14,11 +14,41 @@
 </head>
 
 <body>
-    <div class="container">
+    <header class="stick-top header-bg">
+        <nav class="navbar navbar-expand-lg navbar-dark container-xl p-3">
+          <a class="navbar-brand p-0" href="index.html">
+            <img class="header-icone" src="icones/logo-icone.png" alt="Trip Diary logo">
+          </a>
+          <button class="navbar-toggler" type="button" 
+              data-toggle="collapse" data-target="#navbarSupportedContent" 
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Botão expandir menu nav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto flex-row flex-wrap justify-content-center p-1 pl-lg-5">
+              <li class="nav-item bg-white rounded-lg px-2 m-1">
+                <a class="nav-link text-dark" href="perfil.html">Meu Perfil</a>
+              </li>
+              <li class="nav-item bg-white rounded-lg px-2 m-1">
+                <a class="nav-link text-dark" href="cadastro-roteiro.html">Criar Roteiro</a>
+              </li>
+              <li class="nav-item bg-white rounded-lg px-2 m-1">
+                <a class="nav-link text-dark" href="sobre.html">Sobre</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0 justify-content-center">
+              <input class="form-control mr-sm-2 rounded-pill border-dark" type="search" 
+                  placeholder="Buscar" aria-label="Buscar">
+              <button class="btn rounded-pill btn-padrao my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+          </div>
+        </nav>
+      </header>
+    <div class="container mt-5">
         <h1>Tour Romântico em Paris</h1>
         <br>
         <div class="row">
-            <div class="col-sm-12 col-lg-4">
+            <div class="col-sm-12 col-lg-4 ">
                 <label><strong>Estilo do Roteiro</strong></label>
                 <p><i class="icon-user icon-white"></i>Romântico</p><i class="icon-search"></i>
 
@@ -33,17 +63,17 @@
             </div>
         </div>
 
-        <div id="principal" class="form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg mt-200 ">
+        <div id="principal" class="form-group shadow dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg mt-200 ">
             <div class="row">
-                <div class="col-4">
-                    <h3><span class="badge badge-primary float-left">Dia 1 </span></h3>
+                <div class="col-4 mb-2 mt-n3">
+                    <h3><span class="badge shadow badge-primary float-left">Dia 1 </span></h3>
                 </div>
                 
             </div>
             <br>
             <div id="dia">
                 <div class="form-group row">
-                    <div class=" col-sm-4 col-lg-6 float-left">
+                    <div class=" col-sm-4 col-lg-6 col-md-6 float-left">
                         <label><strong>Relatos do dia:</strong></label>
                         <div>
                             <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus
@@ -58,13 +88,13 @@
                                 sit amet fermentum.</p>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4 col-lg-6 float-left">
+                            <div class="col-sm-4 col-lg-6 col-md-8 float-left">
                                 <label class="col-form-label"><strong>Gastos do dia:</strong></label>
                                 <p>R$500.00 / pessoa</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 col-lg-6 float-left">
+                    <div class="col-sm-4 col-lg-6 col-md-5 float-left">
                         <label><strong>Locais por onde passei:</strong></label>
                         <ul class="list-group">
                             <li class="list-group-item">Cras justo odio</li>
@@ -81,17 +111,17 @@
 
         </div>
 
-        <div id="principal" class="form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg mt-200 ">
+        <div id="principal" class="form-group shadow dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg mt-200 ">
             <div class="row">
-                <div class="col-4">
-                    <h3><span class="badge badge-primary float-left">Dia 2 </span></h3>
+                <div class="col-4 mb-2 mt-n3">
+                    <h3><span class="badge shadow badge-primary float-left">Dia 2 </span></h3>
                 </div>
                 
             </div>
             <br>
             <div id="dia">
                 <div class="form-group row">
-                    <div class=" col-sm-4 col-lg-6 float-left">
+                    <div class=" col-sm-4 col-lg-6 col-md-6 float-left">
                         <label><strong>Relatos do dia:</strong></label>
                         <div>
                             <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus
@@ -106,13 +136,13 @@
                                 sit amet fermentum.</p>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4 col-lg-6 float-left">
+                            <div class="col-sm-4 col-lg-6 col-md-8 float-left">
                                 <label class="col-form-label"><strong>Gastos do dia:</strong></label>
                                 <p>R$500.00 / pessoa</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 col-lg-6 float-left">
+                    <div class="col-sm-4 col-lg-6 col-md-5 float-left">
                         <label><strong>Locais por onde passei:</strong></label>
                         <ul class="list-group">
                             <li class="list-group-item">Cras justo odio</li>
@@ -129,17 +159,17 @@
 
         </div>
 
-        <div id="principal" class="form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg mt-200 ">
+        <div id="principal" class="form-group shadow dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg mt-200 ">
             <div class="row">
-                <div class="col-4">
-                    <h3><span class="badge badge-primary float-left">Dia 3</span></h3>
+                <div class="col-4 mb-2 mt-n3">
+                    <h3><span class="badge shadow badge-primary float-left">Dia 3 </span></h3>
                 </div>
                 
             </div>
             <br>
             <div id="dia">
                 <div class="form-group row">
-                    <div class=" col-sm-4 col-lg-6 float-left">
+                    <div class=" col-sm-4 col-lg-6 col-md-6 float-left">
                         <label><strong>Relatos do dia:</strong></label>
                         <div>
                             <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus
@@ -154,13 +184,13 @@
                                 sit amet fermentum.</p>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4 col-lg-6 float-left">
+                            <div class="col-sm-4 col-lg-6 col-md-8 float-left">
                                 <label class="col-form-label"><strong>Gastos do dia:</strong></label>
                                 <p>R$500.00 / pessoa</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 col-lg-6 float-left">
+                    <div class="col-sm-4 col-lg-6 col-md-5 float-left">
                         <label><strong>Locais por onde passei:</strong></label>
                         <ul class="list-group">
                             <li class="list-group-item">Cras justo odio</li>
@@ -177,17 +207,17 @@
 
         </div>
 
-        <div id="principal" class="form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg mt-200 ">
+        <div id="principal" class="form-group shadow dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg mt-200 ">
             <div class="row">
-                <div class="col-4">
-                    <h3><span class="badge badge-primary float-left">Dia 4 </span></h3>
+                <div class="col-4 mb-2 mt-n3">
+                    <h3><span class="badge shadow badge-primary float-left">Dia 4 </span></h3>
                 </div>
                 
             </div>
             <br>
             <div id="dia">
                 <div class="form-group row">
-                    <div class=" col-sm-4 col-lg-6 float-left">
+                    <div class=" col-sm-4 col-lg-6 col-md-6 float-left">
                         <label><strong>Relatos do dia:</strong></label>
                         <div>
                             <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus
@@ -202,13 +232,13 @@
                                 sit amet fermentum.</p>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4 col-lg-6 float-left">
+                            <div class="col-sm-4 col-lg-6 col-md-8 float-left">
                                 <label class="col-form-label"><strong>Gastos do dia:</strong></label>
                                 <p>R$500.00 / pessoa</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 col-lg-6 float-left">
+                    <div class="col-sm-4 col-lg-6 col-md-5 float-left">
                         <label><strong>Locais por onde passei:</strong></label>
                         <ul class="list-group">
                             <li class="list-group-item">Cras justo odio</li>
@@ -225,17 +255,17 @@
 
         </div>
 
-        <div id="principal" class="form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg mt-200 ">
+        <div id="principal" class="form-group shadow dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg mt-200 ">
             <div class="row">
-                <div class="col-4">
-                    <h3><span class="badge badge-primary float-left">Dia 5 </span></h3>
+                <div class="col-4 mb-2 mt-n3">
+                    <h3><span class="badge shadow badge-primary float-left">Dia 5 </span></h3>
                 </div>
                 
             </div>
             <br>
             <div id="dia">
                 <div class="form-group row">
-                    <div class=" col-sm-4 col-lg-6 float-left">
+                    <div class=" col-sm-4 col-lg-6 col-md-6 float-left">
                         <label><strong>Relatos do dia:</strong></label>
                         <div>
                             <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus
@@ -250,13 +280,13 @@
                                 sit amet fermentum.</p>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4 col-lg-6 float-left">
+                            <div class="col-sm-4 col-lg-6 col-md-8 float-left">
                                 <label class="col-form-label"><strong>Gastos do dia:</strong></label>
                                 <p>R$500.00 / pessoa</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 col-lg-6 float-left">
+                    <div class="col-sm-4 col-lg-6 col-md-5 float-left">
                         <label><strong>Locais por onde passei:</strong></label>
                         <ul class="list-group">
                             <li class="list-group-item">Cras justo odio</li>
@@ -272,9 +302,9 @@
             <br>
 
         </div>
+       
         <br>
-        <h2 class="text-justify">Imagens do Roteiro</h2>
-<br>
+        <h2 class="text-justify mb-3">Imagens do Roteiro</h2>
         <div class="row">
             <div class="col-md-4">
               <div class="thumbnail">
@@ -342,7 +372,7 @@
 
 
           <div class="panel panel-default widget">
-            <div class="panel-heading">
+            <div class="panel-heading mb-2">
                 <span class="glyphicon glyphicon-comment"></span>
                 <h3 class="panel-title">
                     Comentários Recentes</h3>
@@ -354,28 +384,26 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-2 col-md-1">
-                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                                <img src="imagens/homem.jpg" class="img-circle img-fluid  img-responsive" alt="" /></div>
                             <div class="col-xs-10 col-md-11">
                                 <div>
-                                    <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                        Google Style Login Page Design Using Bootstrap</a>
+                                    <p>
+                                        Roteiro muito top</p>
                                     <div class="mic-info">
-                                        By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                        By: <a href="#">Jose hernadez</a> on 2 Aug 2019
                                     </div>
                                 </div>
                                 <div class="comment-text">
-                                    Awesome design
+                                    Eu e minha esposa adoramos este roteiro, obrigado por compartilhar com a gente.
                                 </div>
                                 <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    <button type="button" class="btn-xs rounded btn-primary  img-fluid" title="Like">
+                                        <img class ="icones-comentarios" src="icones/gostar.svg">
                                     </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
+                                    <button type="button" class=" rounded btn-success btn-xs" title="Responder">
+                                        <img class ="icones-comentarios" src="icones/reply.svg">
                                     </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -383,28 +411,26 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-2 col-md-1">
-                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                                <img src="imagens/casal.jpg" class="img-circle img-fluid  img-responsive" alt="" /></div>
                             <div class="col-xs-10 col-md-11">
                                 <div>
-                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/Obgj">Admin Panel Quick Shortcuts</a>
+                                    <p>
+                                        Gostamos muito de passar nossa lua de mel na frança</p>
                                     <div class="mic-info">
-                                        By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
+                                        By: <a href="#">Micke Jhones</a> on 2 Aug 2019
                                     </div>
                                 </div>
                                 <div class="comment-text">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+Esse roteiro coube direitinho no nosso bolso, podemos conhecer varios lugares e gastando muito pouco
                                 </div>
                                 <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    <button type="button" class="btn-xs rounded btn-primary  img-fluid" title="Like">
+                                        <img class ="icones-comentarios" src="icones/gostar.svg">
                                     </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
+                                    <button type="button" class=" rounded btn-success btn-xs" title="Responder">
+                                        <img class ="icones-comentarios" src="icones/reply.svg">
                                     </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -412,39 +438,35 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-2 col-md-1">
-                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                                <img src="imagens/mulher.jpg" class="img-circle img-fluid img-responsive" alt="" /></div>
                             <div class="col-xs-10 col-md-11">
                                 <div>
-                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/4ldn">Cool Sign Up</a>
+                                    <p>
+                                        Gostei muito</p>
                                     <div class="mic-info">
-                                        By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
+                                        By: <a href="#">Nina andrade</a> on 2 Aug 2019
                                     </div>
                                 </div>
                                 <div class="comment-text">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                                </div>
+Esse passeio é tão romÂntico que nele conheci o amor da minha vida                                </div>
                                 <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    <button type="button" class="btn-xs rounded btn-primary  img-fluid" title="Like">
+                                        <img class ="icones-comentarios" src="icones/gostar.svg">
                                     </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
+                                    <button type="button" class=" rounded btn-success btn-xs" title="Responder">
+                                        <img class ="icones-comentarios" src="icones/reply.svg">
                                     </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
+                                   
                                 </div>
                             </div>
                         </div>
                     </li>
                 </ul>
-                <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
+                <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Mais Comentários</a>
             </div>
         </div>
 
     </div>
-    
 
 
     <script src="jQuery/jquery-3.4.1.min.js"></script>
