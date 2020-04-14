@@ -41,21 +41,30 @@ body {
     height: 4rem;
     width: 4rem;
 }
-.badge-primary{
-background-color: #267780;
+
+.seguidores-icone {
+    height: 2rem;
+    width: 2rem;
 }
+
+.badge-primary{
+    background-color: #267780;
+}
+
 .dynamic-element{
     margin-bottom: 30px;
 }
 
 .icones-comentarios{
     width: 1em;
-    height: 1em;}
+    height: 1em;
+}
 
-    .bg-footer{
-        background-color: #333333;
-        color: #f2f2f2;
-    }
-    .bg-footer a {
-        color: aqua;
-    }
+.bg-footer{
+    background-color: #333333;
+    color: #f2f2f2;
+}
+
+.bg-footer a {
+    color: aqua;
+}
