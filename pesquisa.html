@@ -12,6 +12,36 @@
   </head>
 
   <body>
+    <header class="sticky-top header-bg">
+      <nav class="navbar navbar-expand-xl navbar-dark container-xl p-3">
+        <a class="navbar-brand p-0" href="sobre.html">
+          <img class="header-icone" src="icones/logo-icone.png" alt="Trip Diary logo">
+        </a>
+        <button class="navbar-toggler" type="button" 
+            data-toggle="collapse" data-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Botão expandir menu nav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto flex-row flex-wrap justify-content-center p-1 pl-lg-5">
+            <li class="nav-item bg-white rounded-lg px-2 m-1">
+              <a class="nav-link text-dark" href="perfil.html">Meu Perfil</a>
+            </li>
+            <li class="nav-item bg-white rounded-lg px-2 m-1">
+              <a class="nav-link text-dark" href="cadastro-roteiro.html">Criar Roteiro</a>
+            </li>
+            <li class="nav-item bg-white rounded-lg px-2 m-1">
+              <a class="nav-link text-dark" href="sobre.html">Sobre</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0 justify-content-center">
+            <input class="form-control mr-sm-2 rounded-pill border-dark" type="search" 
+                placeholder="Buscar" aria-label="Buscar">
+            <button class="btn rounded-pill btn-padrao my-2 my-sm-0" type="submit">Buscar</button>
+          </form>
+        </div>
+      </nav>
+    </header>
     <main>
       <div class="container my-5">
         <h1 class="text-center text-uppercase">Busca filtrada</h1>
@@ -20,7 +50,7 @@
           <form class="row mx-0" action="" method="GET">
             <div class="col-sm-6 input-group input-group-lg my-1 px-0">
               <div class="card w-100 mx-2">
-                <div class="input-group-prepend">
+                <div class="input-group-prepend p-1">
                   <input class="checkbox-lg my-auto" type="checkbox" name="filtros" id="roteiros">
                   <label class="my-auto ml-2" for="roteiros">Roteiros</label>
                 </div>
@@ -28,7 +58,7 @@
             </div>
             <div class="col-sm-6 input-group input-group-lg my-1 px-0">
               <div class="card w-100 mx-2">
-                <div class="input-group-prepend">
+                <div class="input-group-prepend p-1">
                   <input class="checkbox-lg my-auto" type="checkbox" name="filtros" id="usuarios">
                   <label class="my-auto ml-2" for="usuarios">Usuarios</label>
                 </div>
@@ -152,7 +182,11 @@
         </section>
       </div>
     </main>
-
+    <footer class="page-footer font-small pt-4 bg-footer">
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="index.html"> Trip Diary</a>
+      </div>
+    </footer>
     <script src="jQuery/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
