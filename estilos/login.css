@@ -2,7 +2,8 @@
     width: 325px;
     height: 90px;
 }
-body{
-    background: rgb(0,184,204);
+
+.bg-gradient {
+    background: -o-linear-gradient(276deg, rgba(0,184,204,1) 1%, rgba(43,192,219,0.9923319669664741) 15%, rgba(38,119,128,0.19681375968356096) 65%);
     background: linear-gradient(174deg, rgba(0,184,204,1) 1%, rgba(43,192,219,0.9923319669664741) 15%, rgba(38,119,128,0.19681375968356096) 65%);
 }
