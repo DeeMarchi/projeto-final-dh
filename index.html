@@ -1,92 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="description" content="Roteiros de viagem social">
+		<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./estilos/geral.css">
+		<link rel="stylesheet" href="./estilos/login.css">
+		<title>Login - Trip Diary</title>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Roteiros de viagem social">
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./estilos/geral.css">
-    <link rel="stylesheet" href="./estilos/login.css">
-
-
-
-    <title>Login - Trip Diary</title>
-</head>
-
-<body>
-
-    <main>
-
-        <div class="container  d-table vh-75 mb-5 rounded">
-            <form class="w-100 d-table-cell align-middle" action="" method="POST">
-                <div class="max-width-340p mx-auto">
-                    <form class="text-center justify-content-center  border border-light p-5 " action="#!">
-
-                        <img class="mb-5 logo-login" src="./icones/logo.png">
-
-                        <!-- Email -->
-                        <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-
-                        <!-- Password -->
-                        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
-
-                        <div class="d-flex justify-content-around">
-                            <div>
-                                <!-- Remember me -->
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                                    <label class="custom-control-label" for="defaultLoginFormRemember">Lembrar-me</label>
-                                </div>
-                            </div>
-                            <div>
-                                <!-- Forgot password -->
-                                <a href="">Esqueceu a Senha?</a>
-                            </div>
-                        </div>
-
-                        <!-- Sign in button -->
-                        <a href="sobre.html" class="btn btn-info btn-block my-4 btn-logar" type="submit">Logar</a>
-
-                        <!-- Register -->
-                        <p>Não está cadastrado?
-                            <a href="cadastro.html">Registre-se</a>
-                        </p>
-
-
-
-                    </form>
-
-
-
-
-
-
-
-
-                </div>
-            </form>
-        </div>
-    </main>
-
-
-
-
-    <!-- Default form login -->
-    <div id="principal" class="form-group shadow d-inline-flex p-2  d-flex justify-content-center rounded-lg mt-5 ">
-
-
-    </div>
-    <!-- Default form login -->
-    <footer class="page-footer font-small pt-4 bg-footer">
-        <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            <a href="index.html"> Trip Diary</a>
-        </div>
-    </footer>
-    <script src="./jQuery/jquery-3.4.1.min.js"></script>
-    <script src="./bootstrap/js/bootstrap.min.js"></script>
-</body>
+	<body>
+		<main>
+			<div class="container  d-table vh-75 mb-5 rounded">
+				<form class="w-100 d-table-cell align-middle" action="" method="POST">
+					<div class="max-width-340p mx-auto">
+						<form class="text-center justify-content-center  border border-light p-5 " action="#!">
+							<img class="mb-5 logo-login" src="./icones/logo.png">
+							<input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+							<input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+							<div class="d-flex justify-content-around">
+								<div>
+									<div class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+										<label class="custom-control-label" for="defaultLoginFormRemember">Lembrar-me</label>
+									</div>
+								</div>
+								<div>
+									<a href="">Esqueceu a Senha?</a>
+								</div>
+							</div>
+							<a href="sobre.html" class="btn btn-info btn-block my-4 btn-logar" type="submit">Logar</a>
+							<p>Não está cadastrado?
+								<a href="cadastro.html">Registre-se</a>
+							</p>
+						</form>
+					</div>
+				</form>
+			</div>
+		</main>
+		<div id="principal" class="form-group shadow d-inline-flex p-2  d-flex justify-content-center rounded-lg mt-5 ">
+		</div>
+		<footer class="page-footer font-small pt-4 bg-footer">
+			<div class="footer-copyright text-center py-3">© 2020 Copyright:
+				<a href="index.html"> Trip Diary</a>
+			</div>
+		</footer>
+		<script src="./jQuery/jquery-3.4.1.min.js"></script>
+		<script src="./bootstrap/js/bootstrap.min.js"></script>
+	</body>
 
 </html>
