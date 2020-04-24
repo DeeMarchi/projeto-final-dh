@@ -47,6 +47,11 @@ body {
     width: 2rem;
 }
 
+.roteiro-icone {
+    height: 1.4rem;
+    width: 1.4rem;
+}
+
 .badge-primary{
     background-color: #267780;
 }
