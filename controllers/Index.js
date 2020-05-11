@@ -1,7 +1,7 @@
 const IndexController = {
 
     index: (req, res) => {
-        res.render('home', { titulo: 'Home' });
+        res.render('cadastro', { titulo: 'Cadastro' });
     },
 
 };
