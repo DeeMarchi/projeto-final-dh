@@ -1,6 +1,6 @@
 var dia = 1;
 
-function roteiro_fields() {
+function roteiroCampo() {
     if (dia < 30) {
         dia++;
     }
@@ -27,7 +27,7 @@ function roteiro_fields() {
     }
 }
 
-function remove_roteiro_fields() {
+function removerCampoRoteiro() {
     if (dia == 2) {
         document.getElementById("btnRemover").style.visibility = "hidden";
 
