@@ -12,55 +12,7 @@
     <main>
       <div class="container my-5">
         <h1>Crie Seu Roteiro</h1>
-        <form class='column-12 mb-4 roteiro-stick-menu'>
-          <div class="row mb-2">
-            <div class="col-sm-12 col-lg-4">
-              <label><strong>Qual foi o estilo da sua viagem?</strong></label>
-              <select class="form-control custom select">
-                <option>Casual</option>
-                <option>Romantico</option>
-                <option>Aventureiro</option>
-                <option>Praieiro</option>
-                <option>Misto</option>
-              </select>
-            </div>
-            <div class="col-sm-12 col-lg-4">
-              <label><strong>Qual o Título do Seu Roteiro?</strong></label>
-              <input type="text" class="form-control" id="teste" placeholder="Ex: Mochilão Chile, Bolívia e Peru">
-            </div>
-            <div class="col-sm-12 col-lg-4">
-              <label><strong>Data de início da viagem:</strong></label>
-              <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-            <strong id="qntDias">Quantidade de dias</strong>
-  
-          </div>
-          </div>
-          <div class="row d-flex flex-row">
-            <div class="input-group-btn  col-sm-4 col-lg-3 col-md-4 ">
-              <button id="adicionarDia"class="btn btn-padrao "data-toggle="tooltip" data-placement="top" title="Adicione dias ao seu roteiro" type="button"  onclick="roteiroCampo();">Adicionar dia</button>
-            </div>
-            
-            <div class="input-group-btn col-sm-4 col-lg-4 col-md-4 ">
-              <button id="btnRemover" class="btn btn-danger" type="button" style="visibility: hidden" data-toggle="tooltip" data-placement="top" title="Remova dias do seu roteiro"  onclick="removerCampoRoteiro();"> Remover dia </button>
-            </div>
-            <div class="input-group-btn  col-sm-2 col-lg-5 col-md-8">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                </div>
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="inputGroupFile01"
-                    aria-describedby="inputGroupFileAddon01" multiple>
-                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
+        <%- include('./partials/pag-criar-roteiro/form') %>
         
         <div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
           <div class="row">
