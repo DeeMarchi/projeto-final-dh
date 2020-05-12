@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro.min.css">
+    <%- include('./partials/head') %>
+  </head>
+
+  <body>
+    <%- include('./partials/header') %>
+  
+    <main>
+      <div class="container my-5">
+        <h1>Crie Seu Roteiro</h1>
+        <form class='column-12 mb-4 roteiro-stick-menu'>
+          <div class="row mb-2">
+            <div class="col-sm-12 col-lg-4">
+              <label><strong>Qual foi o estilo da sua viagem?</strong></label>
+              <select class="form-control custom select">
+                <option>Casual</option>
+                <option>Romantico</option>
+                <option>Aventureiro</option>
+                <option>Praieiro</option>
+                <option>Misto</option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-lg-4">
+              <label><strong>Qual o Título do Seu Roteiro?</strong></label>
+              <input type="text" class="form-control" id="teste" placeholder="Ex: Mochilão Chile, Bolívia e Peru">
+            </div>
+            <div class="col-sm-12 col-lg-4">
+              <label><strong>Data de início da viagem:</strong></label>
+              <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+            <strong id="qntDias">Quantidade de dias</strong>
+  
+          </div>
+          </div>
+          <div class="row d-flex flex-row">
+            <div class="input-group-btn  col-sm-4 col-lg-3 col-md-4 ">
+              <button id="adicionarDia"class="btn btn-padrao "data-toggle="tooltip" data-placement="top" title="Adicione dias ao seu roteiro" type="button"  onclick="roteiro_fields();">Adicionar dia</button>
+            </div>
+            
+            <div class="input-group-btn col-sm-4 col-lg-4 col-md-4 ">
+              <button id="btnRemover" class="btn btn-danger" type="button" style="visibility: hidden" data-toggle="tooltip" data-placement="top" title="Remova dias do seu roteiro"  onclick="remove_roteiro_fields();"> Remover dia </button>
+            </div>
+            <div class="input-group-btn  col-sm-2 col-lg-5 col-md-8">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01" multiple>
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        
+        <div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+          <div class="row">
+            <div class="col-1 ">
+            <div class="col-1 mb-2 mt-n2 "><h3><span class=" shadow badge badge-primary float-left">Dia 1</span></h3></div>
+            </div>
+          </div>
+  
+          <div class="form-group row">
+            <div class=" col-sm-4 col-lg-6 col-md-5 float-left">
+              <label><strong>Relatos do dia:</strong></label>
+              <textarea type="text" class="form-control" row="5" placeholder="Descreva como foram os passeios realizados neste dia"></textarea>
+              <sub class="form-text text-muted"></s>
+            </div>
+            <div class="col-sm-4 col-lg-6 col-md-6 float-left">
+              <label><strong>Locais por onde passei:</strong></label>
+              <input type="text"
+              data-role="taginput"
+              data-cls-tag-title="text-bold fg-white"
+              data-cls-tag="bg-olive"
+              data-cls-tag-remover="bg-darkOlive fg-white"
+              data-tag-trigger="Comma"
+              data-random-color="true"
+              placeholder="Locais que visitou neste dia">
+                        <sub class="form-text text-muted">Locais que visitou neste dia</s>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-4 col-lg-6 col-md-6 float-left">
+              <label  class="col-form-label"><strong>Média de Gastos:</strong></label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <select class="form-control custom select">
+                    <option>USD</option>
+                    <option>BRL</option>
+                    <option>EUR</option>
+                  </select>
+                </div>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                  <span class="input-group-text">.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row d-flex justify-content-end mb-5">
+          <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+            <a href="single-roteiro.html" class="btn btn-padrao d-inline-flex p-2" type="button" > Finalizar Roteiro </a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <%- include('./partials/footer') %> 
+    <%- include('./partials/scripts-body') %> 
+    <script src="/javascripts/dinamic-form.js"></script>
+    <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+  </body>
+
+</html>
