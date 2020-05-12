@@ -1,7 +1,7 @@
 const IndexController = {
 
     index: (req, res) => {
-        res.render('ver-roteiro', { titulo: 'Cadastro' });
+        res.render('criar-roteiro', { titulo: 'Cadastro' });
     },
 
 };
