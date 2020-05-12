@@ -8,47 +8,31 @@
   <body>
     <%- include('./partials/header') %>
     <main>
-      <div class="container my-5">
-        <h1 class="text-center text-uppercase">Busca filtrada</h1>
-        <section class="my-4">
-          <h2 class="text-center text-uppercase m-3">Filtros</h2>
-          <form action="" method="GET">
-            <div class="d-flex justify-content-center flex-wrap">
-              <div class="card w-75 mx-2 max-width-340p my-1">
-                <div class="input-group-prepend p-1 justify-content-center">
-                  <input class="checkbox-lg my-auto" type="checkbox" name="filtros" id="roteiros">
-                  <label class="my-auto ml-2" for="roteiros">Roteiros</label>
-                </div>
+      <div class="row m-0">
+        <div class="d-none d-xl-block col-xl-2">
+          <%- include('./partials/side-bar') %>
+        </div>
+        <div class="col">
+          <div class="container my-5">
+            <h1 class="text-center text-uppercase">Busca filtrada</h1>
+            <%- include('./partials/pag-pesquisa/form-busca') %>
+            <section class="mb-5">
+              <h2 class="text-center">Roteiros</h2>
+              <% for (let i = 0; i < 5; ++i) { %>
+                <%- include('./partials/pag-perfil/roteiro-visualizacao') %>
+              <% } %>
+            <section>
+              <h2 class="text-center">Usuários</h2>
+              <div class="row justify-content-center">
+                <% for (let i = 0; i < 7; ++i) { %>
+                  <div class="col-xs-12 col-sm-6 col-md-4 px-sm-1 px-md-3">
+                    <%- include('./partials/comp-side-bar/seguidor') %>
+                  </div>
+                <% } %> 
               </div>
-              <div class="card w-75 mx-2 max-width-340p my-1">
-                <div class="input-group-prepend p-1 justify-content-center">
-                  <input class="checkbox-lg my-auto" type="checkbox" name="filtros" id="usuarios">
-                  <label class="my-auto ml-2" for="usuarios">Usuarios</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group my-2 mx-auto text-center w-100 max-width-340p px-4">
-              <input class="form-control rounded-pill border-dark text-center" type="text" name="nomeParaBuscar" id="nome-para-buscar"
-                  placeholder="buscar usuario/roteiro" aria-label="Busca de roteiros ou usuários">
-              <button class="btn btn-padrao rounded-pill my-2 mx-auto" type="submit">Buscar</button>
-            </div>
-          </form>
-        </section>
-        <section class="mb-5">
-          <h2 class="text-center">Roteiros</h2>
-          <% for (let i = 0; i < 5; ++i) { %>
-            <%- include('./partials/pag-perfil/roteiro-visualizacao') %>
-          <% } %>
-        <section>
-          <h2 class="text-center">Usuários</h2>
-          <div class="row justify-content-center">
-            <% for (let i = 0; i < 7; ++i) { %>
-              <div class="col-xs-12 col-sm-6 col-md-4 px-sm-1 px-md-3">
-                <%- include('./partials/comp-side-bar/seguidor') %>
-              </div>
-            <% } %> 
+            </section>
           </div>
-        </section>
+        </div>
       </div>
     </main>
     <%- include('./partials/footer') %>
