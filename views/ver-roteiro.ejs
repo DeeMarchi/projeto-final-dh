@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <%- include('./partials/head') %>
+    <link rel="stylesheet" href="estilos/single-roteiro.css">
+  </head>
+
+  <body>
+    <%- include('./partials/header') %>
+    
+    <div class="row">
+      <div class="d-none d-xl-block col-xl-2">
+        <%- include('./partials/side-bar') %>
+      </div>
+      <div class="col">
+        <div class="container my-5">
+          <%- include('./partials/pag-ver-roteiro/header') %>
+          
+          <% for (let i = 0; i < 5; ++i) { %>
+            <%- include('./partials/pag-ver-roteiro/card-dia') %>
+          <% } %>
+    
+          <h2 class="text-justify mb-3">Imagens do Roteiro</h2>
+          <section class="row mb-5 mx-0">
+            <%- include('./partials/pag-ver-roteiro/imagens') %>
+          </section>
+    
+          <section class="panel panel-default widget mb-5">
+            <div class="panel-heading mb-2">
+              <span class="glyphicon glyphicon-comment"></span>
+              <h3 class="panel-title">Comentários Recentes</h3>
+              <span class="label label-info">78</span>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <% for (let i = 0; i < 4; ++i) { %>
+                  <%- include('./partials/pag-ver-roteiro/comentario') %>
+                <% } %> 
+              </ul>
+              <a href="#" class="btn btn-padrao btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Mais Comentários</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <%- include('./partials/footer') %>
+    <%- include('./partials/scripts-body') %>
+  </body>
+
+</html>
