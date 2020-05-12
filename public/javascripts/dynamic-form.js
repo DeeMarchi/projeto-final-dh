@@ -7,7 +7,7 @@ function roteiroCampo() {
     if (dia >= 30) {
         document.getElementById('adicionarDia').style.visibility = 'hidden';
     }
-    var objTo = document.getElementById('roteiro_fields')
+    var objTo = document.getElementById('roteiro-campos')
     var divtest = document.createElement('div');
     //	divtest.setAttribute("class", "form-group removeclass"+room);
     //var rdiv = 'removeclass'+room;
