@@ -5,36 +5,31 @@ module.exports = function(sequelize, DataTypes) {
         id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
-            primaryKey: true,
-            field: 'id'
+            primaryKey: true
         },
         resumo: {
             type: DataTypes.TEXT,
-            allowNull: false,
-            field: 'resumo'
+            allowNull: false
         },
         gasto: {
             type: "DOUBLE",
-            allowNull: false,
-            field: 'gasto'
+            allowNull: false
         },
-        moedaId: {
+        moeda_id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
             references: {
                 model: 'moeda',
                 key: 'id'
-            },
-            field: 'moeda_id'
+            }
         },
-        roteiroId: {
+        roteiro_id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
             references: {
                 model: 'roteiro',
                 key: 'id'
-            },
-            field: 'roteiro_id'
+            }
         }
     }, {
         freezeTableName: true,

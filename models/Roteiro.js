@@ -5,57 +5,48 @@ module.exports = function(sequelize, DataTypes) {
         id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
-            primaryKey: true,
-            field: 'id'
+            primaryKey: true
         },
-        usuarioId: {
+        usuario_id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
             references: {
                 model: 'usuario',
                 key: 'id'
-            },
-            field: 'usuario_id'
+            }
         },
-        estiloId: {
+        estilo_id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
             references: {
                 model: 'estilo',
                 key: 'id'
-            },
-            field: 'estilo_id'
+            }
         },
         titulo: {
             type: DataTypes.STRING(100),
-            allowNull: false,
-            field: 'titulo'
+            allowNull: false
         },
-        dataInicio: {
+        data_inicio: {
             type: DataTypes.DATE,
-            allowNull: false,
-            field: 'data_inicio'
+            allowNull: false
         },
-        dataCriacao: {
+        data_criacao: {
             type: DataTypes.DATE,
             allowNull: true,
-            unique: true,
-            field: 'data_criacao'
+            unique: true
         },
-        qntdDias: {
+        qntd_dias: {
             type: DataTypes.INTEGER(11),
-            allowNull: true,
-            field: 'qntd_dias'
+            allowNull: true
         },
         descricao: {
             type: DataTypes.STRING(1000),
-            allowNull: false,
-            field: 'descricao'
+            allowNull: false
         },
         likes: {
             type: DataTypes.INTEGER(11),
-            allowNull: true,
-            field: 'likes'
+            allowNull: true
         }
     }, {
         freezeTableName: true,

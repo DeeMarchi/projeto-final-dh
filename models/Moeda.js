@@ -5,18 +5,15 @@ module.exports = function(sequelize, DataTypes) {
         id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
-            primaryKey: true,
-            field: 'id'
+            primaryKey: true
         },
         simbolo: {
             type: DataTypes.STRING(3),
-            allowNull: true,
-            field: 'simbolo'
+            allowNull: true
         },
         nome: {
             type: DataTypes.STRING(80),
-            allowNull: true,
-            field: 'nome'
+            allowNull: true
         }
     }, {
         freezeTableName: true,

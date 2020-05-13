@@ -5,22 +5,19 @@ module.exports = function(sequelize, DataTypes) {
         id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
-            primaryKey: true,
-            field: 'id'
+            primaryKey: true
         },
-        usuarioId: {
+        usuario_id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
             references: {
                 model: 'usuario',
                 key: 'id'
-            },
-            field: 'usuario_id'
+            }
         },
         url: {
             type: DataTypes.TEXT,
-            allowNull: true,
-            field: 'url'
+            allowNull: true
         }
     }, {
         freezeTableName: true,
