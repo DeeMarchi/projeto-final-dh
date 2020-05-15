@@ -3,22 +3,19 @@
 module.exports = function(sequelize, DataTypes) {
     const Local = sequelize.define('Local', {
         id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
             allowNull: false,
-            primaryKey: true
         },
         nome: {
-            type: DataTypes.STRING(200),
-            allowNull: false
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         dia_id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'dia',
-                key: 'id'
-            }
-        }
+        },
     }, {
         freezeTableName: true,
         tableName: 'local',

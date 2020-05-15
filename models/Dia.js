@@ -3,34 +3,27 @@
 module.exports = function(sequelize, DataTypes) {
     const Dia = sequelize.define('Dia', {
         id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
             allowNull: false,
-            primaryKey: true
         },
         resumo: {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: false,
         },
         gasto: {
-            type: "DOUBLE",
-            allowNull: false
+            type: DataTypes.DOUBLE,
+            allowNull: false,
         },
         moeda_id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'moeda',
-                key: 'id'
-            }
         },
         roteiro_id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'roteiro',
-                key: 'id'
-            }
-        }
+        },
     }, {
         freezeTableName: true,
         tableName: 'dia',

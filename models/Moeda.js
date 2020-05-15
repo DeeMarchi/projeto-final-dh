@@ -3,18 +3,19 @@
 module.exports = function(sequelize, DataTypes) {
     const Moeda = sequelize.define('Moeda', {
         id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
             allowNull: false,
-            primaryKey: true
         },
         simbolo: {
-            type: DataTypes.STRING(3),
-            allowNull: true
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         nome: {
-            type: DataTypes.STRING(80),
-            allowNull: true
-        }
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     }, {
         freezeTableName: true,
         tableName: 'moeda',

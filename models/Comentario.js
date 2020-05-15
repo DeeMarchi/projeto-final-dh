@@ -3,34 +3,27 @@
 module.exports = function(sequelize, DataTypes) {
     const Comentario = sequelize.define('Comentario', {
         id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
             allowNull: false,
-            primaryKey: true
         },
         conteudo: {
             type: DataTypes.TEXT,
-            allowNull: true
+            allowNull: false,
         },
         roteiro_id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'roteiro',
-                key: 'id'
-            }
         },
         usuario_id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'usuario',
-                key: 'id'
-            }
         },
         likes: {
-            type: DataTypes.INTEGER(11),
-            allowNull: true
-        }
+            type: DataTypes.INTEGER,
+            defaultValue: 0,
+        },
     }, {
         freezeTableName: true,
         tableName: 'comentario',

@@ -3,30 +3,20 @@
 module.exports = function(sequelize, DataTypes) {
     const Curtida = sequelize.define('Curtida', {
         id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
             allowNull: false,
-            primaryKey: true
         },
         roteiro_id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'roteiro',
-                key: 'id'
-            }
         },
         usuario_id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'usuario',
-                key: 'id'
-            }
         },
-        data: {
-            type: DataTypes.DATE,
-            allowNull: true
-        }
+        data: DataTypes.DATE,
     }, {
         freezeTableName: true,
         tableName: 'curtida',
