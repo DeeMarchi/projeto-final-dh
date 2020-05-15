@@ -4,7 +4,6 @@ const {
     CurtidaComentario,
     Dia,
     Estilo,
-    ImagemAvatar,
     ImagemRoteiro,
     Local,
     Moeda,
@@ -18,7 +17,6 @@ const testarQueries = async () => {
     resultadoQuery = await CurtidaComentario.findAll();
     resultadoQuery = await Dia.findAll();
     resultadoQuery = await Estilo.findAll();
-    resultadoQuery = await ImagemAvatar.findAll();
     resultadoQuery = await ImagemRoteiro.findAll();
     resultadoQuery = await Local.findAll();
     resultadoQuery = await Moeda.findAll();

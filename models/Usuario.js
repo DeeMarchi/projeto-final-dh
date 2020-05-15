@@ -3,27 +3,34 @@
 module.exports = function(sequelize, DataTypes) {
     const Usuario = sequelize.define('Usuario', {
         id: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true
+            autoIncrement: true,
+            primaryKey: true,
         },
         nome: {
-            type: DataTypes.STRING(100),
-            allowNull: false
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
         },
         usuario: {
-            type: DataTypes.STRING(35),
-            allowNull: false
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
         },
         email: {
-            type: DataTypes.STRING(100),
+            type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
         },
         senha: {
-            type: DataTypes.STRING(250),
-            allowNull: false
-        }
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        imagem_url: {
+            type: DataTypes.TEXT,
+            defaultValue: null,
+        },
     }, {
         freezeTableName: true,
         tableName: 'usuario',
