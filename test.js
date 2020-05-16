@@ -1,3 +1,6 @@
+const Sequelize = require('sequelize');
+const { Op } = Sequelize;
+
 const {
     Comentario,
     Curtida,
@@ -12,16 +15,36 @@ const {
 } = require('./models');
 
 const testarQueries = async () => {
-    let resultadoQuery = await Comentario.findAll();
-    resultadoQuery = await Curtida.findAll();
-    resultadoQuery = await CurtidaComentario.findAll();
-    resultadoQuery = await Dia.findAll();
-    resultadoQuery = await Estilo.findAll();
-    resultadoQuery = await ImagemRoteiro.findAll();
-    resultadoQuery = await Local.findAll();
-    resultadoQuery = await Moeda.findAll();
-    resultadoQuery = await Roteiro.findAll();
-    resultadoQuery = await Usuario.findAll();
+    const resultadoQuery = await Promise.all([
+        Comentario.findAll(),
+        Curtida.findAll(),
+        CurtidaComentario.findAll(),
+        Dia.findAll(),
+        Estilo.findAll(),
+        ImagemRoteiro.findAll(),
+        Local.findAll(),
+        Moeda.findAll(),
+        Roteiro.findAll(),
+        Usuario.findAll(),
+    ]);
 };
 
-testarQueries();
+const testarUsuarioRoteiro = async () => {
+    console.log('\n\nRelações Usuário | Roteiro\n\n');
+
+    const resultado = await Usuario.findByPk(0, {
+        include: {
+            model: Roteiro,
+            required: true,
+            as: 'roteiro',
+        },
+    });
+    console.log('\n\n');
+};
+
+const testarRelacoes = () => {
+    testarUsuarioRoteiro();
+};
+
+testarQueries()
+    .then(testarRelacoes);

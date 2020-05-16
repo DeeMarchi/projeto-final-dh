@@ -47,5 +47,12 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false,
     });
 
+    Roteiro.associate = models => {
+        Roteiro.belongsTo(models.Usuario, {
+            foreignKey: 'id',
+            as: 'usuario',
+        });
+    };
+
     return Roteiro;
 };
