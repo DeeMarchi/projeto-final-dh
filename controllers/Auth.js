@@ -1,3 +1,9 @@
+const {
+    check,
+    validationResult,
+    body
+} = require('express-validator');
+
 const AuthController = {
 
     auth: (req, res) => {
@@ -11,6 +17,10 @@ const AuthController = {
             titulo: 'Cadastrar',
         });
     },
+
+    validacoes: [
+
+    ],
 
     cadastrar: (req, res) => {
         console.log(req.body);

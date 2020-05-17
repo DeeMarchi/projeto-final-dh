@@ -14,7 +14,7 @@ module.exports = {
                 allowNull: false,
                 unique: true,
             },
-            usuario: {
+            apelido: {
                 type: Sequelize.STRING(35),
                 allowNull: false,
                 unique: true,

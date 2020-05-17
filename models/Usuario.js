@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: true,
         },
-        usuario: {
+        apelido: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
