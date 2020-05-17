@@ -29,6 +29,11 @@ module.exports = function(sequelize, DataTypes) {
         },
         imagem_url: {
             type: DataTypes.TEXT,
+            defaultValue: '/icones/componentes/usuario/user.svg',
+            allowNull: false,
+        },
+        resumo: {
+            type: DataTypes.TEXT,
             defaultValue: null,
         },
     }, {

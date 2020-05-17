@@ -10,7 +10,7 @@ module.exports = {
                 allowNull: false,
             },
             nome: {
-                type: Sequelize.STRING(100),
+                type: Sequelize.STRING(200),
                 allowNull: false,
                 unique: true,
             },
@@ -20,7 +20,7 @@ module.exports = {
                 unique: true,
             },
             email: {
-                type: Sequelize.STRING(100),
+                type: Sequelize.STRING(255),
                 allowNull: false,
                 unique: true,
             },
@@ -29,6 +29,11 @@ module.exports = {
                 allowNull: false,
             },
             imagem_url: {
+                type: Sequelize.TEXT,
+                defaultValue: '/icones/componentes/usuario/user.svg',
+                allowNull: false,
+            },
+            resumo: {
                 type: Sequelize.TEXT,
                 defaultValue: null,
             },
