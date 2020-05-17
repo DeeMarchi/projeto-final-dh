@@ -12,6 +12,10 @@ const AuthController = {
         });
     },
 
+    cadastrar: (req, res) => {
+        console.log(req.body);
+    },
+
 };
 
 module.exports = AuthController;
