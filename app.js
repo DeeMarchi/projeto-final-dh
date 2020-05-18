@@ -28,8 +28,15 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+app.use((req, res, next) => {
+    res.locals.usuario = req.session.usuario;
+    next();
+});
+
 app.use('/', authRouter);
 app.use('/index', indexRouter);
+
+
 
 // catch 404 and forward to error handler
 // app.use((req, res, next) => {
