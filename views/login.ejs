@@ -10,10 +10,19 @@
     <main>
       <section class="d-table vh-100 rounded mx-auto p-3">
         <div class="d-table-cell align-middle">
-          <form class="text-center max-width-340p" action="#!" method="POST">
+          <form class="text-center max-width-340p" action="/" method="POST">
             <img class="mb-5 img-fluid" src="/icones/logo.png" alt="Logo">
-            <input class="form-control rounded-pill border-dark mb-4" type="email" id="defaultLoginFormEmail" placeholder="E-mail" aria-label="Email">
-            <input class="form-control rounded-pill border-dark mb-4" type="password" id="defaultLoginFormPassword" placeholder="Password" aria-label="Senha">
+            <% if (typeof(erros) !== 'undefined') { %>
+              <ul>
+                <% erros.forEach(erro => { %>
+                  <li><%= erro.msg %></li>
+                <% }); %>
+              </ul>
+            <% } %>
+            <input class="form-control rounded-pill border-dark mb-4" type="email"
+                    name="email" id="email" placeholder="E-mail" aria-label="Email">
+            <input class="form-control rounded-pill border-dark mb-4" type="password"
+                    name="senha" id="senha" placeholder="Password" aria-label="Senha">
             <div class="d-flex justify-content-around">
               <div>
                 <div class="custom-control custom-checkbox">

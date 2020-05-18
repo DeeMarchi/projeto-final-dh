@@ -13,6 +13,13 @@
       <div class="container d-table vh-75 mb-5">
         <form class="w-100 d-table-cell align-middle" action="/cadastro" method="POST">
           <div class="max-width-340p mx-auto">
+            <% if (typeof(erros) !== 'undefined') { %>
+              <ul>
+                <% erros.forEach(erro => { %>
+                  <li><%= erro.msg %></li>
+                <% }); %>
+              </ul>
+            <% } %>
             <div class="form-group">
               <input class="form-control rounded-pill border-dark shadow-sm" type="text" 
                       name="nome" id="nome" placeholder="Nome" aria-label="Nome" required>

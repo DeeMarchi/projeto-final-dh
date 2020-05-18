@@ -4,6 +4,7 @@ const {
     body
 } = require('express-validator');
 const { Op } = require('sequelize');
+const bcrypt = require('bcrypt');
 
 const { Usuario } = require('../models');
 
@@ -64,6 +65,33 @@ const AuthController = {
         });
     },
 
+    logar: async (req, res) => {
+        const { email, senha } = req.body;
+        const errors = [];
+
+        const usuario = await Usuario.findOne({
+            where: {
+                email: email,
+            },
+        });
+
+        if (!usuario || !bcrypt.compareSync(senha, usuario.senha)) {
+            errors.push({ msg: 'Usuário não existe, ou senha errada!'});
+
+            return res.render('login', {
+                titulo: 'Login | Erro',
+                erros: errors,
+            });
+        }
+        req.session.usuario = {
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+        }
+
+        return res.redirect('/index');
+    },
+
     cadastro: (req, res) => {
         res.render('cadastro', {
             titulo: 'Cadastrar',
@@ -110,13 +138,38 @@ const AuthController = {
             .custom(verificarUsuarioExiste),
     ],
 
-    cadastrar: (req, res) => {
+    cadastrar: async (req, res) => {
         const listaErros = validationResult(req);
 
+        if (!listaErros.isEmpty()) {
+            return res.render('cadastro', {
+                titulo: 'Cadastrar | Erro', 
+                erros: listaErros.errors ,
+            });
+        } else {
+            const { 
+                nome, 
+                apelido, 
+                email, 
+                senha 
+            } = req.body;
+            const senhaCripto = bcrypt.hashSync(senha, 10);
 
+            const novoUsuario = await Usuario.create({
+                nome: nome,
+                apelido: apelido,
+                email: email,
+                senha: senhaCripto,
+            });
+            req.session.usuario = {
+                id: novoUsuario.id,
+                nome: novoUsuario.nome,
+                email: novoUsuario.email,
+            }
 
+            return res.redirect('/index');
+        }
     },
-
 };
 
 module.exports = AuthController;
