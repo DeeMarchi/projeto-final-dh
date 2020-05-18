@@ -14,8 +14,11 @@ const CAMPO_EMAIL = 'email';
 const CAMPO_SENHA = 'senha';
 const CAMPO_CONFIRMA_SENHA = 'confirmaSenha';
 
+/* Proíbe simbolos usados em tags html para evitar XSS persistente ao mostrar o apelido */
 const CHARS_PROIBIDOS_REGEX = `[<>/\(\)'";]`;
-const ESPACOS_E_ALPHA_REGEX = '^[a-zA-Z ]*$';
+
+/* Este regex captura espaços letras e mais os caractéres unicode latinos */
+const ESPACOS_E_ALPHA_REGEX = '^[a-zA-Z\u00c0-\u00ff ]*$';
 
 /**
  * Trata uma string com excesso de espaços
