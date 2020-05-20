@@ -18,7 +18,6 @@
           <div class="container my-5">
             <h1>Crie Seu Roteiro</h1>
             <%- include('./partials/pag-criar-roteiro/form') %>
-            
             <div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg">
               <div class="row">
                 <div class="col-1 ">
@@ -29,7 +28,7 @@
               <div class="form-group row">
                 <div class=" col-sm-4 col-lg-6 col-md-5 float-left">
                   <label><strong>Relatos do dia:</strong></label>
-                  <textarea type="text" class="form-control" row="5" placeholder="Descreva como foram os passeios realizados neste dia"></textarea>
+                  <textarea type="text" name="relato" class="form-control" row="5" placeholder="Descreva como foram os passeios realizados neste dia"></textarea>
                   <sub class="form-text text-muted"></s>
                 </div>
                 <div class="col-sm-4 col-lg-6 col-md-6 float-left">
@@ -41,6 +40,8 @@
                   data-cls-tag-remover="bg-darkOlive fg-white"
                   data-tag-trigger="Comma"
                   data-random-color="true"
+                  data-max-tags="5"
+                  name="locais"
                   placeholder="Locais que visitou neste dia">
                             <sub class="form-text text-muted">Locais que visitou neste dia</s>
                 </div>
@@ -51,10 +52,12 @@
                   <label  class="col-form-label"><strong>Média de Gastos:</strong></label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <select class="form-control custom select">
-                        <option>USD</option>
-                        <option>BRL</option>
-                        <option>EUR</option>
+                      <select class="form-control custom select" name="selectMoeda">
+                        <% if(typeof(moedaViagem) != undefined ){ %>
+                          <% moedaViagem.forEach( moeda => { %>
+                            <option value=<%=moeda.id%> class="list-group-item"><%=moeda.simbolo%></option>
+                            <% }) %>
+                          <%}%>
                       </select>
                     </div>
                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
@@ -76,6 +79,7 @@
                 <a href="single-roteiro.html" class="btn btn-padrao d-inline-flex p-2" type="button" > Finalizar Roteiro </a>
               </div>
             </div>
+</form>
           </div>
         </div>
       </div>

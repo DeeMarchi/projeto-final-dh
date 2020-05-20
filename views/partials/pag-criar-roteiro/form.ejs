@@ -2,27 +2,27 @@
   <div class="row mb-2">
     <div class="col-sm-12 col-lg-4">
       <label><strong>Qual foi o estilo da sua viagem?</strong></label>
-      <select class="form-control custom select">
-        <option>Casual</option>
-        <option>Romantico</option>
-        <option>Aventureiro</option>
-        <option>Praieiro</option>
-        <option>Misto</option>
+      <select class="form-control custom select"  name="selectEstilodaViagem">
+         <% if(typeof(estilosViagem) != undefined ){ %>
+                    <% estilosViagem.forEach( estilo => { %>
+                      <option value=<%=estilo.id%> class="list-group-item"><%=estilo.nome%></option>
+                      <% }) %>
+                    <%}%>
       </select>
     </div>
     <div class="col-sm-12 col-lg-4">
       <label><strong>Qual o Título do Seu Roteiro?</strong></label>
-      <input type="text" class="form-control" id="teste" placeholder="Ex: Mochilão Chile, Bolívia e Peru">
+      <input type="text" class="form-control" id="teste" name="nomeRoteiro" placeholder="Ex: Mochilão Chile, Bolívia e Peru">
     </div>
     <div class="col-sm-12 col-lg-4">
       <label><strong>Data de início da viagem:</strong></label>
-      <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+      <input class="form-control" type="date" name="dataViagem" id="example-date-input">
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-    <strong id="qntDias">Quantidade de dias</strong>
-
+    <strong id="qntDias"></strong>
+    <input class="form-control" type="text" id="dias" name="qnt" placeholder="teste" readonly>
   </div>
   </div>
   <div class="row d-flex flex-row">
@@ -46,4 +46,3 @@
       </div>
     </div>
   </div>
-</form>

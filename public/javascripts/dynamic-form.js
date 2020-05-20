@@ -15,6 +15,9 @@ function roteiroCampo() {
     document.getElementById('btnRemover').style.visibility = 'visible';
     if (dia <= 30) {
         document.getElementById('qntDias').innerHTML = contadorDias();
+        document.getElementById("dias").value = dia;
+
+
     }
     if (dia <= 30) {
         //' + dia + '
@@ -36,6 +39,9 @@ function removerCampoRoteiro() {
     $('.removeclass' + dia).remove();
     dia = dia - 1;
     document.getElementById('qntDias').innerHTML = contadorDias();
+    document.getElementById("dias").value = dia;
+
+
     if (dia < 30) {
         document.getElementById('adicionarDia').style.visibility = 'visible';
     }
@@ -46,3 +52,4 @@ const contadorDias = () => {
 }
 
 document.getElementById('qntDias').innerHTML = contadorDias();
+document.getElementById('dias').setAttribute('value',dia);
