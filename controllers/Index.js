@@ -6,6 +6,18 @@ const IndexController = {
         });
     },
 
+    sobre: (req, res) => {
+        res.render('sobre', {
+            titulo: 'Sobre',
+        });
+    },
+
+    pesquisa: (req, res) => {
+        res.render('Pesquisa', {
+            titulo: 'Pesquisa',
+        });
+    },
+
 };
 
 module.exports = IndexController;
