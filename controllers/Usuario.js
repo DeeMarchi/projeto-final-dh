@@ -11,7 +11,8 @@ const UsuarioController = {
 
             if (usuario) {
                 return res.render('perfil', {
-                    titulo: 'Perfil'
+                    titulo: 'Perfil',
+                    usuarioPagina: usuario,
                 });
             }
         }
