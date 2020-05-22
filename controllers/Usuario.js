@@ -29,6 +29,8 @@ const UsuarioController = {
 
     buscar: async (req, res) => {
         const nomesDeBusca = req.body.nomeParaBuscar.split(' ');
+
+        /* A linha abaixo basicamente serve como um 'OR' com todas as palavras recebidas como parâmetro */
         const nomesRegex = nomesDeBusca.join('|');
 
         const usuarios = await Usuario.findAll({
