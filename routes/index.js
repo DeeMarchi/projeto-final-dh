@@ -11,6 +11,7 @@ router.get('/', autenticado, IndexController.home);
 router.get('/sobre', autenticado, IndexController.sobre);
 
 router.get('/pesquisa', autenticado, IndexController.pesquisa);
+router.post('/pesquisa', autenticado, UsuarioController.buscar);
 
 router.get('/perfil/:id', autenticado, UsuarioController.perfil);
 
