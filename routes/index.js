@@ -17,6 +17,7 @@ router.post('/pesquisa', autenticado, UsuarioController.buscar);
 
 router.get('/perfil/:id', autenticado, tratarIdPerfil, UsuarioController.perfil);
 router.get('/perfil/:id/editar', autenticado, tratarIdPerfil, perfilEditarProtecao, UsuarioController.editar);
+router.put('/perfil/:id/editar', autenticado, tratarIdPerfil, perfilEditarProtecao, UsuarioController.valicadoes, UsuarioController.atualizar);
 
 router.get('/criar-roteiro', autenticado, RoteiroController.criaRoteiro);
 

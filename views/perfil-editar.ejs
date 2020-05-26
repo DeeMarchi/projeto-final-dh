@@ -16,7 +16,14 @@
 
         <div class="col">
           <div class="container my-5">
-            <form action="">
+            <form action="/index/perfil/<%= usuarioPagina.id %>/editar?_method=PUT" method="POST">
+              <% if (typeof(erros) !== 'undefined') { %>
+                <ul>
+                  <% erros.forEach(erro => { %>
+                    <li><%= erro.msg %></li>
+                  <% }); %>
+                </ul>
+              <% } %>
               <%- include('./partials/pag-perfil/secao-info') %>
               <%- include('./partials/pag-perfil/resumo-edicao') %>
               <div class="text-center">

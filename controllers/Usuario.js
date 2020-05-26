@@ -1,6 +1,17 @@
 const { Usuario } = require('../models');
 const { Op } = require('sequelize');
 
+const {
+    check,
+    validationResult,
+    body
+} = require('express-validator');
+
+const CAMPO_NOVO_RESUMO = 'novoResumo';
+
+/* Proíbe simbolos usados em tags html para evitar XSS persistente ao mostrar o resumo */
+const CHARS_PROIBIDOS_REGEX = `[<>/\(\)'";]`;
+
 const UsuarioController = {
 
     perfil: async (req, res, next) => {
@@ -67,6 +78,37 @@ const UsuarioController = {
         }
         next();
     },
+
+    valicadoes: [
+        check(CAMPO_NOVO_RESUMO)
+            .isLength({ max: 2000 })
+            .withMessage(`o campo ${CAMPO_NOVO_RESUMO} não pode conter mais que 2000 caractéres`)
+            .bail()
+            .not().matches(CHARS_PROIBIDOS_REGEX)
+            .withMessage(`o campo ${CAMPO_NOVO_RESUMO} contém caractéres proibídos!`),
+    ],
+
+    atualizar: async (req, res) => {
+        const { id } = req.session.usuario;
+        const { novoResumo } = req.body;
+
+        const listaErros = validationResult(req);
+        
+        if (!listaErros.isEmpty()) {
+            return res.render('perfil-editar', {
+                titulo: 'Editar | Erro',
+                usuarioPagina: req.session.usuario,
+                erros: listaErros.errors ,
+            });
+        } else {
+            const usuarioUpdate = await Usuario.findByPk(id);
+    
+            usuarioUpdate.resumo = novoResumo;
+            await usuarioUpdate.save();
+    
+            return res.redirect(`/index/perfil/${id}`);
+        }
+    }
 
 };
 

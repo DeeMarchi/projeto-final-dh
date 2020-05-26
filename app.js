@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
+const methodOverride = require('method-override');
 
 const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
@@ -22,6 +23,7 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(methodOverride('_method'));
 app.use(session({
     secret: '#!&*@!djasiodjao12309102',
     resave: true,
