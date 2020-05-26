@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <%- include('./partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/perfil.css">
+  </head>
+
+  <body>
+    <%- include('./partials/header') %>
+    <main>
+      
+      <div class="row m-0">
+        <div class="d-none d-xl-block col-xl-2">
+          <%- include('./partials/side-bar') %>
+        </div>
+
+        <div class="col">
+          <div class="container my-5">
+            <form action="">
+              <%- include('./partials/pag-perfil/secao-info') %>
+              <%- include('./partials/pag-perfil/resumo-edicao') %>
+              <div class="text-center">
+                <button class="btn rounded-pill btn-padrao w-25 mt-4" type="submit"><strong>Salvar</strong></button>
+              </div>
+            </form>
+            <section class="my-5">
+            <h2 class="text-center my-4">Meus roteiros</h2>
+              <% for (let i = 0; i < 5; ++i) { %>
+                <%- include('./partials/pag-perfil/roteiro-edicao') %>
+              <% } %> 
+            </section>
+            
+          </div>
+        </div>
+      </div>
+    </main>
+    <%- include('./partials/footer') %> 
+    <%- include('./partials/scripts-body') %> 
+  </body>
+
+</html>

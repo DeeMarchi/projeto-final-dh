@@ -1,20 +1,13 @@
-const {
-    Usuario
-} = require('../models');
-const {
-    Op
-} = require('sequelize');
+const { Usuario } = require('../models');
+const { Op } = require('sequelize');
 
 const UsuarioController = {
 
     perfil: async (req, res, next) => {
-        let {
-            id
-        } = req.params;
-        id = Number(id);
+        const { idPerfil } = res.locals;
 
-        if (Number.isInteger(id)) {
-            const usuario = await Usuario.findByPk(id);
+        if (res.statusCode === 200) {
+            const usuario = await Usuario.findByPk(idPerfil);
 
             if (usuario) {
                 return res.render('perfil', {
@@ -23,8 +16,7 @@ const UsuarioController = {
                 });
             }
         }
-        res.status(404);
-        return next();
+        next();
     },
 
     buscar: async (req, res) => {
@@ -58,6 +50,22 @@ const UsuarioController = {
             usuariosBusca: usuarios,
         });
 
+    },
+
+    editar: async (req, res, next) => {
+        const { idPerfil } = res.locals;
+
+        if (res.statusCode === 200) {
+            const usuario = await Usuario.findByPk(idPerfil);
+
+            if (usuario) {
+                return res.render('perfil-editar', {
+                    titulo: 'Perfil - Editar',
+                    usuarioPagina: usuario,
+                });
+            }
+        }
+        next();
     },
 
 };
