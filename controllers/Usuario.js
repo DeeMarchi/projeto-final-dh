@@ -90,24 +90,39 @@ const UsuarioController = {
 
     atualizar: async (req, res) => {
         const { id } = req.session.usuario;
-        const { novoResumo } = req.body;
+        const [ novoAvatar ] = req.files;
 
-        const listaErros = validationResult(req);
+        console.log(novoAvatar);
+        console.log(id);
+
+        console.log(req.body);
         
-        if (!listaErros.isEmpty()) {
-            return res.render('perfil-editar', {
-                titulo: 'Editar | Erro',
-                usuarioPagina: req.session.usuario,
-                erros: listaErros.errors ,
-            });
-        } else {
-            const usuarioUpdate = await Usuario.findByPk(id);
+        
+
+
+
+
+
+
+
+        // const { novoResumo } = req.body;
+
+        // const listaErros = validationResult(req);
+        
+        // if (!listaErros.isEmpty()) {
+        //     return res.render('perfil-editar', {
+        //         titulo: 'Editar | Erro',
+        //         usuarioPagina: req.session.usuario,
+        //         erros: listaErros.errors ,
+        //     });
+        // } else {
+        //     const usuarioUpdate = await Usuario.findByPk(id);
     
-            usuarioUpdate.resumo = novoResumo;
-            await usuarioUpdate.save();
+        //     usuarioUpdate.resumo = novoResumo;
+        //     await usuarioUpdate.save();
     
-            return res.redirect(`/index/perfil/${id}`);
-        }
+        //     return res.redirect(`/index/perfil/${id}`);
+        // }
     }
 
 };
