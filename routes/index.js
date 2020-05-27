@@ -5,20 +5,12 @@ const IndexController = require('../controllers/Index');
 const UsuarioController = require('../controllers/Usuario');
 const RoteiroController = require('../controllers/Roteiro');
 
-const autenticado = require('../middlewares/autenticado');
-const perfilEditarProtecao = require('../middlewares/perfilEditarProtecao');
-const tratarIdPerfil = require('../middlewares/tratarIdPerfil');
+router.get('/', IndexController.home);
+router.get('/sobre', IndexController.sobre);
 
-router.get('/', autenticado, IndexController.home);
-router.get('/sobre', autenticado, IndexController.sobre);
+router.get('/pesquisa', IndexController.pesquisa);
+router.post('/pesquisa', UsuarioController.buscar);
 
-router.get('/pesquisa', autenticado, IndexController.pesquisa);
-router.post('/pesquisa', autenticado, UsuarioController.buscar);
-
-router.get('/perfil/:id', autenticado, tratarIdPerfil, UsuarioController.perfil);
-router.get('/perfil/:id/editar', autenticado, tratarIdPerfil, perfilEditarProtecao, UsuarioController.editar);
-router.put('/perfil/:id/editar', autenticado, tratarIdPerfil, perfilEditarProtecao, UsuarioController.valicadoes, UsuarioController.atualizar);
-
-router.get('/criar-roteiro', autenticado, RoteiroController.criaRoteiro);
+router.get('/criar-roteiro', RoteiroController.criaRoteiro);
 
 module.exports = router;
