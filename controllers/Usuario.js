@@ -7,7 +7,10 @@ const {
     body
 } = require('express-validator');
 
+const path = require('path');
+
 const CAMPO_NOVO_RESUMO = 'novoResumo';
+const CAMPO_NOVO_AVATAR = 'novoAvatar';
 
 /* Proíbe simbolos usados em tags html para evitar XSS persistente ao mostrar o resumo */
 const CHARS_PROIBIDOS_REGEX = `[<>/\(\)'";]`;
@@ -90,39 +93,38 @@ const UsuarioController = {
 
     atualizar: async (req, res) => {
         const { id } = req.session.usuario;
-        const [ novoAvatar ] = req.files;
-
-        console.log(novoAvatar);
-        console.log(id);
-
-        console.log(req.body);
+        let pathEstatico;
         
-        
+        /* pega o path estático /avatar/usuarioID.png sem dependência de plataforma (path.sep) */
+        if (req.file) {
+            pathEstatico = req.file.path.substr(req.file.path.indexOf(path.sep));
+        }
+        const { novoResumo } = req.body;
 
+        const listaErros = validationResult(req);
 
-
-
-
-
-
-        // const { novoResumo } = req.body;
-
-        // const listaErros = validationResult(req);
-        
-        // if (!listaErros.isEmpty()) {
-        //     return res.render('perfil-editar', {
-        //         titulo: 'Editar | Erro',
-        //         usuarioPagina: req.session.usuario,
-        //         erros: listaErros.errors ,
-        //     });
-        // } else {
-        //     const usuarioUpdate = await Usuario.findByPk(id);
+        if (req.fileValidationError) {
+            listaErros.errors.push({
+                msg: req.fileValidationError,
+            });
+        }
+        if (!listaErros.isEmpty()) {
+            return res.render('perfil-editar', {
+                titulo: 'Editar | Erro',
+                usuarioPagina: req.session.usuario,
+                erros: listaErros.errors ,
+            });
+        } else {
+            const usuarioUpdate = await Usuario.findByPk(id);
     
-        //     usuarioUpdate.resumo = novoResumo;
-        //     await usuarioUpdate.save();
+            if (pathEstatico) {
+                usuarioUpdate.imagem_url = pathEstatico;
+            }
+            usuarioUpdate.resumo = novoResumo;
+            await usuarioUpdate.save();
     
-        //     return res.redirect(`/index/perfil/${id}`);
-        // }
+            return res.redirect(`/index/perfil/${id}`);
+        }
     }
 
 };

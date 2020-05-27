@@ -7,6 +7,10 @@
     max-width: 940px;
 }
 
+.tamanho-max-img {
+    max-width: 20%;
+}
+
 .btn-info{
     background-color: #1FE0EC;
     border-color: #1FE0EC;
