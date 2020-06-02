@@ -13,6 +13,16 @@ const roteiroController = {
             moedaViagem:moedas
         });
     },
+    criarRoteiro: async (req, res) => {
+        let {selectEstilodaViagem,nomeRoteiro,dataViagem,qnt,relato,locais,selectMoeda}=req.body
+        
+         for (let i = 1; i <= qnt; i++){
+             console.log(req.body['relato' + i])
+             console.log(req.body['locais' + i])
+             console.log(req.body['selectMoeda' + i])     
+        }  
+        
+    },
 
 };
 

@@ -11,6 +11,7 @@ const autenticado = require('../middlewares/autenticado');
 router.get('/', autenticado, IndexController.home);
 
 router.get('/criar-roteiro', roteiros.criaRoteiro);
+router.post('/criar-roteiro', roteiros.criarRoteiro);
 
 
 module.exports = router;

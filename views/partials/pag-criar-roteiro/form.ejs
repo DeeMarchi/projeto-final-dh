@@ -1,4 +1,4 @@
-<form class='column-12 mb-4 roteiro-stick-menu'>
+<form method="POST" action="/index/criar-roteiro" class='column-12 mb-4 roteiro-stick-menu'>
   <div class="row mb-2">
     <div class="col-sm-12 col-lg-4">
       <label><strong>Qual foi o estilo da sua viagem?</strong></label>
@@ -27,7 +27,7 @@
   </div>
   <div class="row d-flex flex-row">
     <div class="input-group-btn  col-sm-4 col-lg-3 col-md-4 ">
-      <button id="adicionarDia"class="btn btn-padrao "data-toggle="tooltip" data-placement="top" title="Adicione dias ao seu roteiro" type="button"  onclick="roteiroCampo();">Adicionar dia</button>
+      <button id="adicionarDia"class="btn btn-padrao add-button"data-toggle="tooltip" data-placement="top" title="Adicione dias ao seu roteiro" type="button"  onclick="roteiroCampo();">Adicionar dia</button>
     </div>
     
     <div class="input-group-btn col-sm-4 col-lg-4 col-md-4 ">
@@ -46,3 +46,13 @@
       </div>
     </div>
   </div>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+        $(".add-button").on("click", function () {
+          roteiroCampo(moedaViagem);
+        });
+    });
+</script>
