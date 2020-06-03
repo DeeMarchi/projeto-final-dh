@@ -42,8 +42,22 @@ const testarUsuarioRoteiro = async () => {
     console.log('\n\n');
 };
 
-const testarRelacoes = () => {
-    testarUsuarioRoteiro();
+const testarEstiloRoteiro = async () => {
+    console.log('\n\nRelações Estilo | Roteiro\n\n');
+
+    const resultado = await Roteiro.findAll({
+        include: {
+            model: Estilo,
+            required: true,
+            as: 'estilo',
+        }
+    });
+    console.log('\n\n');
+};
+
+const testarRelacoes = async () => {
+    await testarUsuarioRoteiro();
+    await testarEstiloRoteiro();
 };
 
 testarQueries()

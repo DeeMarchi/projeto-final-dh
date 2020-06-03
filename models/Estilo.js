@@ -19,5 +19,12 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false,
     });
 
+    Estilo.associate = models => {
+        Estilo.belongsTo(models.Roteiro, {
+            foreignKey: 'id',
+            as: 'roteiro',
+        });
+    };
+
     return Estilo;
 };

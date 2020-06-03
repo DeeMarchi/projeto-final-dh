@@ -52,6 +52,11 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey: 'id',
             as: 'usuario',
         });
+        
+        Roteiro.hasOne(models.Estilo, {
+            foreignKey: 'id',
+            as: 'estilo',
+        });
     };
 
     return Roteiro;
