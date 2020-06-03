@@ -12,5 +12,7 @@ router.get('/pesquisa', IndexController.pesquisa);
 router.post('/pesquisa', UsuarioController.buscar);
 
 router.get('/criar-roteiro', RoteiroController.criaRoteiro);
+router.post('/criar-roteiro', RoteiroController.criaRoteiro);
+
 
 module.exports = router;
