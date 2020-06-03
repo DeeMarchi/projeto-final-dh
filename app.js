@@ -4,9 +4,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
+const methodOverride = require('method-override');
 
 const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
+const usuarioRouter = require('./routes/usuario');
+
+/* Middlewares customizados do projeto */
+const autenticado = require('./middlewares/autenticado');
+const tratarIdPerfil = require('./middlewares/tratarIdPerfil');
 
 const app = express();
 
@@ -22,6 +28,7 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(methodOverride('_method'));
 app.use(session({
     secret: '#!&*@!djasiodjao12309102',
     resave: true,
@@ -34,9 +41,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/', authRouter);
-app.use('/index', indexRouter);
-
-
+app.use('/index', autenticado, indexRouter);
+app.use('/index/perfil/:id', autenticado, tratarIdPerfil, usuarioRouter);
 
 // catch 404 and forward to error handler
 // app.use((req, res, next) => {

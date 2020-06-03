@@ -73,3 +73,10 @@ body {
 .bg-footer a {
     color: aqua;
 }
+
+/* 1200px == --breakpoint-xl */
+@media only screen and (max-width: 1200px) {
+    .w-75 {
+        width: auto !important;
+    }
+}

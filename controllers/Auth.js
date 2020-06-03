@@ -90,6 +90,9 @@ const AuthController = {
             id: usuario.id,
             nome: usuario.nome,
             email: usuario.email,
+            apelido: usuario.apelido,
+            imagem_url: usuario.imagem_url,
+            resumo: usuario.resumo,
         }
 
         return res.redirect('/index');
@@ -168,6 +171,9 @@ const AuthController = {
                 id: novoUsuario.id,
                 nome: novoUsuario.nome,
                 email: novoUsuario.email,
+                apelido: novoUsuario.apelido,
+                imagem_url: usuario.imagem_url,
+                resumo: usuario.resumo,
             }
 
             return res.redirect('/index');

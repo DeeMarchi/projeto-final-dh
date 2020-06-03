@@ -16,11 +16,14 @@
 
         <div class="col">
           <div class="container my-5">
+            <% if (usuarioPagina.id === usuario.id) { %>
+              <%- include('./partials/pag-perfil/btn-editar') %>
+            <% } %>
             <%- include('./partials/pag-perfil/secao-info') %>
             <%- include('./partials/pag-perfil/resumo') %>
             
             <section class="my-5">
-              <h2 class="text-center my-4">Roteiros</h2>
+            <h2 class="text-center my-4"><%= usuarioPagina.id === usuario.id ? "Meus Roteiros" : "Roteiros" %></h2>
               <% for (let i = 0; i < 5; ++i) { %>
                 <%- include('./partials/pag-perfil/roteiro-visualizacao') %>
               <% } %> 
