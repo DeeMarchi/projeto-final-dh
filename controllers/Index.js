@@ -1,21 +1,35 @@
-const { Roteiro, Usuario } = require('../models');
+const {
+    Roteiro,
+    Estilo,
+    Usuario
+} = require('../models');
+
+const moment = require ('moment')
 
 const IndexController = {
 
     home: async (req, res) => {
         const roteiros = await Roteiro.findAll({
-            include: {
-                model: Usuario,
-                as: 'usuario',
-                required: true,
-            }
+            include: [{
+                    model: Usuario,
+                    as: 'usuario',
+                    required: true,
+                }, {
+                    model: Estilo,
+                    as: 'estilo',
+                    required: true,
+                },
+            ],
         });
 
         console.log(roteiros);
         
 
+
         res.render('home', {
             titulo: 'Home',
+            roteiros,
+            moment,
         });
     },
 

@@ -49,14 +49,14 @@ module.exports = function(sequelize, DataTypes) {
 
     Roteiro.associate = models => {
         Roteiro.belongsTo(models.Usuario, {
-            foreignKey: 'id',
+            foreignKey: 'usuario_id',
             as: 'usuario',
         });
-        
-        Roteiro.hasOne(models.Estilo, {
-            foreignKey: 'id',
+
+        Roteiro.belongsTo(models.Estilo, {
+            foreignKey: 'estilo_id',
             as: 'estilo',
-        });
+        })
     };
 
     return Roteiro;

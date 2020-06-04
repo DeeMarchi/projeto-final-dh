@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
     Estilo.associate = models => {
         Estilo.belongsTo(models.Roteiro, {
             foreignKey: 'id',
-            as: 'roteiro',
+            as: 'estilo',
         });
     };
 
