@@ -15,7 +15,7 @@ const {
 } = require('./models');
 
 const testarQueries = async () => {
-    const resultadoQuery = await Promise.all([
+    await Promise.all([
         Comentario.findAll(),
         Curtida.findAll(),
         CurtidaComentario.findAll(),
@@ -29,50 +29,23 @@ const testarQueries = async () => {
     ]);
 };
 
-const testarUsuarioRoteiro = async () => {
-    console.log('\n\nRelações Usuário | Roteiro\n\n');
+const testarRelacao = async (model, includeModel, alias = includeModel.name.toLocaleLowerCase()) => {
+    console.log(`\n\nRelações ${includeModel.name} | ${model.name}\n\n`);
 
-    const resultado = await Usuario.findByPk(0, {
+    await model.findAll({
         include: {
-            model: Roteiro,
+            model: includeModel,
             required: true,
-            as: 'roteiro',
-        },
-    });
-    console.log('\n\n');
-};
-
-const testarEstiloRoteiro = async () => {
-    console.log('\n\nRelações Estilo | Roteiro\n\n');
-
-    const resultado = await Roteiro.findAll({
-        include: {
-            model: Estilo,
-            required: true,
-            as: 'estilo',
+            as: alias,
         }
     });
-    console.log('\n\n');
 };
 
-const testarDiaRoteiro = async () => {
-    console.log('\n\nRelações Dia | Roteiro\n\n');
-
-    const resultado = await Roteiro.findAll({
-        include: {
-            model: Dia,
-            required: true,
-            as: 'dia',
-        }
-    });
-    console.log('\n\n');
-};
-
-const testarRelacoes = async () => {
-    await testarUsuarioRoteiro();
-    await testarEstiloRoteiro();
-    await testarDiaRoteiro();
+const testesRelacoes = async () => {
+    await testarRelacao(Roteiro, Usuario);
+    await testarRelacao(Roteiro, Estilo);
+    await testarRelacao(Roteiro, Dia);
 };
 
 testarQueries()
-    .then(testarRelacoes);
+    .then(testesRelacoes);
