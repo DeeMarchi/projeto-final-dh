@@ -55,9 +55,23 @@ const testarEstiloRoteiro = async () => {
     console.log('\n\n');
 };
 
+const testarDiaRoteiro = async () => {
+    console.log('\n\nRelações Dia | Roteiro\n\n');
+
+    const resultado = await Roteiro.findAll({
+        include: {
+            model: Dia,
+            required: true,
+            as: 'dia',
+        }
+    });
+    console.log('\n\n');
+};
+
 const testarRelacoes = async () => {
     await testarUsuarioRoteiro();
     await testarEstiloRoteiro();
+    await testarDiaRoteiro();
 };
 
 testarQueries()
