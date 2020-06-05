@@ -81,7 +81,40 @@ const roteiroController = {
     showRoteiro: async (req, res) => {
         let idRoteiro = req.params.id
 
+  let {dataValues} = await Roteiro.findOne({
+            where: {
+                id: idRoteiro
+            },
+            include: [{
+                    model: Dia,
+                as: 'dia',
+                required: true,
+
+                    include: [{
+                        model: Local,
+                        as: 'local',
+                        required: true,
+
+                    }]
+            },
+                {
+                    model: Estilo,
+                    as: 'estilo',
+                    required: true,
+
+
+                }
+
+            ]
+  });
         
+        
+   res.render('ver-roteiro', {
+    titulo: `Roteiro ${dataValues.titulo}`,
+      roteiro: dataValues,
+    moment:moment
+  }); 
+        console.log(roteiro)
 
 
 

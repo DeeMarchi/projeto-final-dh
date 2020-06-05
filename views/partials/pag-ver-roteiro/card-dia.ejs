@@ -1,7 +1,7 @@
 <section id="principal" class="form-group shadow dynamic-element list-group list-group-item flex-col align-items-start rounded-lg my-4 ">
   <div class="row">
     <div class="col-4 mb-2 mt-n3">
-      <h3><span class="badge shadow badge-primary float-left">Dia 1 </span></h3>
+      <h3><span class="badge shadow badge-primary float-left">Dia <%=qnt %> </span></h3>
     </div>
   </div>
   <div id="dia">
@@ -9,32 +9,23 @@
       <article class=" col-sm-4 col-lg-6 col-md-6 float-left">
         <label><strong>Relatos do dia:</strong></label>
         <div>
-          <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus
-            sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter
-            est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt
-            uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus
-            sit amet fermentum. 
-            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus
-            sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter
-            est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt
-            uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus
-            sit amet fermentum.</p>
+          <p class="text"><%=dia.resumo  %> </p>
         </div>
         <div class="row">
           <div class="col-sm-4 col-lg-6 col-md-8 float-left">
             <label class="col-form-label"><strong>Gastos do dia:</strong></label>
-            <p>R$500.00 / pessoa</p>
+            <p><%=dia.gasto%>/  pessoa</p>
           </div>
         </div>
       </article>
       <article class="col-sm-4 col-lg-6 col-md-5 float-left">
         <label><strong>Locais por onde passei:</strong></label>
         <ul class="list-group">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+          <%dia.local.forEach(local => {%>
+            <li class="list-group-item"><%=local.nome %> </li>
+
+         <% });  %> 
+         
         </ul>
       </article>
     </div>

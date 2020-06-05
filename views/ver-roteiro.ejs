@@ -17,9 +17,9 @@
         <div class="container my-5">
           <%- include('./partials/pag-ver-roteiro/header') %>
           
-          <% for (let i = 0; i < 5; ++i) { %>
-            <%- include('./partials/pag-ver-roteiro/card-dia') %>
-          <% } %>
+          <% roteiro.dia.forEach((dia,qnt) => { %>
+            <%- include('./partials/pag-ver-roteiro/card-dia',{dia:dia,qnt:++qnt}) %>
+          <% }) %>
     
           <h2 class="text-justify mb-3">Imagens do Roteiro</h2>
           <section class="row mb-5 mx-0">

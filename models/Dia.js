@@ -29,6 +29,12 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'dia',
         timestamps: false,
     });
-
+    Dia.associate = models => {
+     
+        Dia.hasMany(models.Local, {
+            foreignKey: 'dia_id',
+            as: 'local'
+        })
+    };
     return Dia;
 };
