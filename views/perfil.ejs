@@ -24,16 +24,18 @@
             
             <section class="my-5">
             <h2 class="text-center my-4"><%= usuarioPagina.id === usuario.id ? "Meus Roteiros" : "Roteiros" %></h2>
-              <% for (let i = 0; i < 5; ++i) { %>
-                <%- include('./partials/pag-perfil/roteiro-visualizacao') %>
-              <% } %> 
+            <% if (usuarioRoteiros.length > 0) { %>
+              <% usuarioRoteiros.forEach(roteiro => { %>
+                <%- include('./partials/pag-perfil/roteiro-visualizacao', { roteiro }) %>
+              <% }) %>
+            <% } else { %>
+              <h4 class="text-center">Nenhum roteiro cadastrado</h3>
+            <% } %>
             </section>
             
             <section class="my-5">
               <h2 class="text-center my-4">Roteiros curtidos</h2>
-              <% for (let i = 0; i < 5; ++i) { %>
-                <%- include('./partials/pag-perfil/roteiro-visualizacao') %>
-              <% } %> 
+              
             </section>
           </div>
         </div>

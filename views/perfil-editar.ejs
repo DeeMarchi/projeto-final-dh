@@ -33,9 +33,13 @@
             </form>
             <section class="my-5">
             <h2 class="text-center my-4">Meus roteiros</h2>
-              <% for (let i = 0; i < 5; ++i) { %>
-                <%- include('./partials/pag-perfil/roteiro-edicao') %>
-              <% } %> 
+            <% if (usuarioRoteiros.length > 0) { %>
+              <% usuarioRoteiros.forEach(roteiro => { %>
+                <%- include('./partials/pag-perfil/roteiro-edicao', { roteiro }) %>
+              <% }) %>
+            <% } else { %>
+              <h4 class="text-center">Nenhum roteiro cadastrado</h3>
+            <% } %>
             </section>
             
           </div>
