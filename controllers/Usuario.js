@@ -1,4 +1,5 @@
 const { Usuario } = require('../models');
+const { Roteiro } = require('../models');
 const { Op } = require('sequelize');
 
 const {
@@ -22,11 +23,20 @@ const UsuarioController = {
 
         if (res.statusCode === 200) {
             const usuario = await Usuario.findByPk(idPerfil);
+            const usuarioRoteiros = await Roteiro.findAll({
+                where: {
+                    usuario_id: idPerfil,
+                },
+            });
+
+            console.log(usuarioRoteiros);
+            
 
             if (usuario) {
                 return res.render('perfil', {
                     titulo: 'Perfil',
                     usuarioPagina: usuario,
+                    usuarioRoteiros,
                 });
             }
         }
@@ -71,11 +81,17 @@ const UsuarioController = {
 
         if (res.statusCode === 200) {
             const usuario = await Usuario.findByPk(idPerfil);
+            const usuarioRoteiros = await Roteiro.findAll({
+                where: {
+                    usuario_id: idPerfil,
+                },
+            });
 
             if (usuario) {
                 return res.render('perfil-editar', {
                     titulo: 'Perfil - Editar',
                     usuarioPagina: usuario,
+                    usuarioRoteiros,
                 });
             }
         }
