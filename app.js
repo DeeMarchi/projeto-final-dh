@@ -13,6 +13,7 @@ const usuarioRouter = require('./routes/usuario');
 /* Middlewares customizados do projeto */
 const autenticado = require('./middlewares/autenticado');
 const tratarIdPerfil = require('./middlewares/tratarIdPerfil');
+const moedasInit = require('./middlewares/moedasInit');
 
 const app = express();
 
@@ -40,9 +41,12 @@ app.use((req, res, next) => {
     next();
 });
 
+
 app.use('/', authRouter);
 app.use('/index', autenticado, indexRouter);
 app.use('/index/perfil/:id', autenticado, tratarIdPerfil, usuarioRouter);
+
+moedasInit.guardarMoedasAPI();
 
 // catch 404 and forward to error handler
 // app.use((req, res, next) => {
