@@ -20,6 +20,9 @@ const IndexController = {
                     required: true,
                 },
             ],
+            order: [
+                ['id', 'DESC'],
+            ],
         });
 
         console.log(roteiros);
