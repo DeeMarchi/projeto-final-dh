@@ -3,7 +3,8 @@ const {
     Moeda,
     Roteiro,
     Dia,
-    Local
+    Local,
+    ImagemRoteiro
 } = require('../models')
 const moment = require('moment')
 const roteiroController = {
@@ -39,12 +40,17 @@ const roteiroController = {
             dataViagem,
             qnt,
             desc,
-            relato,
-            locais,
-            selectMoeda
         } = req.body
 
-        let roteiro = await Roteiro.create({
+let {files} = req
+
+       // console.log(files)
+        
+        
+
+
+
+         let roteiro = await Roteiro.create({
             usuario_id: req.session.usuario.id,
             estilo_id: selectEstilodaViagem,
             titulo: nomeRoteiro,
@@ -52,7 +58,18 @@ const roteiroController = {
             data_criacao: moment().format('YYYY-MM-DD'),
             qntd_dias: qnt,
             descricao: desc
-        });
+         });
+        
+        if (files.length > 0) {
+            files.forEach(async file => {
+                await ImagemRoteiro.create({ roteiro_id: roteiro.id,url:file.filename })
+
+            });
+        }
+
+        
+        
+        
 
         for (let i = 1; i <= qnt; i++) {
 
@@ -74,7 +91,7 @@ const roteiroController = {
             });
 
 
-        }
+        } 
 
 
     },
@@ -103,6 +120,10 @@ const roteiroController = {
                     required: true,
 
 
+                },
+                {
+                    model: ImagemRoteiro,
+                    as: 'imagens',
                 }
 
             ]
@@ -114,7 +135,7 @@ const roteiroController = {
       roteiro: dataValues,
     moment:moment
   }); 
-        console.log(roteiro)
+        console.log(dataValues)
 
 
 

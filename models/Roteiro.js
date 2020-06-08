@@ -60,6 +60,10 @@ module.exports = function(sequelize, DataTypes) {
         Roteiro.hasMany(models.Dia, {
             foreignKey: 'roteiro_id',
             as: 'dia'
+        }),
+        Roteiro.hasMany(models.ImagemRoteiro, {
+            foreignKey: 'roteiro_id',
+            as: 'imagens'
         })
     };
 
