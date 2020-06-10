@@ -47,6 +47,11 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey: 'usuario_id',
             as: 'roteiro',
         });
+
+        Usuario.hasMany(models.Curtida, {
+            foreignKey: 'usuario_id',
+            as: 'curtida',
+        });
     };
 
     return Usuario;
