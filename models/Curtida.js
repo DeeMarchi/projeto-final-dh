@@ -23,5 +23,12 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false,
     });
 
+    Curtida.associate = models => {
+        Curtida.belongsTo(models.Roteiro, {
+            foreignKey: 'roteiro_id',
+            as: 'curtida',
+        });
+    };
+
     return Curtida;
 };

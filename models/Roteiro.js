@@ -56,15 +56,22 @@ module.exports = function(sequelize, DataTypes) {
         Roteiro.belongsTo(models.Estilo, {
             foreignKey: 'estilo_id',
             as: 'estilo',
-        }),
+        });
+
         Roteiro.hasMany(models.Dia, {
             foreignKey: 'roteiro_id',
-            as: 'dia'
-        }),
+            as: 'dia',
+        });
+
         Roteiro.hasMany(models.ImagemRoteiro, {
             foreignKey: 'roteiro_id',
-            as: 'imagens'
-        })
+            as: 'imagens',
+        });
+
+        Roteiro.hasMany(models.Curtida, {
+            foreignKey: 'roteiro_id',
+            as: 'curtida',
+        });
     };
 
     return Roteiro;

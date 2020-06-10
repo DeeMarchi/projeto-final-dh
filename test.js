@@ -45,6 +45,7 @@ const testesRelacoes = async () => {
     await testarRelacao(Roteiro, Usuario);
     await testarRelacao(Roteiro, Estilo);
     await testarRelacao(Roteiro, Dia);
+    await testarRelacao(Roteiro, Curtida);
 };
 
 testarQueries()

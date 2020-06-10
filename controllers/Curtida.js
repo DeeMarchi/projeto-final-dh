@@ -6,8 +6,10 @@ const CurtidaController = {
         const { usuario } = req.session;
         const { id } = req.body;
 
-        console.log(`id usuário === ${usuario.id}`);
-        console.log(`id roteiro === ${id}`);
+        const roteiro = await Roteiro.findByPk(id);
+        ++roteiro.likes;
+
+        await roteiro.save();
         
         
     },
