@@ -25,10 +25,6 @@ const IndexController = {
             ],
         });
 
-        console.log(roteiros);
-        
-
-
         res.render('home', {
             titulo: 'Home',
             roteiros,

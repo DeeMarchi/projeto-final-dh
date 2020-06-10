@@ -9,6 +9,7 @@ const methodOverride = require('method-override');
 const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
 const usuarioRouter = require('./routes/usuario');
+const curtidasRouter = require('./routes/curtidas');
 
 /* Middlewares customizados do projeto */
 const autenticado = require('./middlewares/autenticado');
@@ -45,6 +46,7 @@ app.use((req, res, next) => {
 app.use('/', authRouter);
 app.use('/index', autenticado, indexRouter);
 app.use('/index/perfil/:id', autenticado, tratarIdPerfil, usuarioRouter);
+app.use('/curtir', autenticado, curtidasRouter);
 
 moedasInit.guardarMoedasAPI();
 
