@@ -35,7 +35,14 @@
             
             <section class="my-5">
               <h2 class="text-center my-4">Roteiros curtidos</h2>
-              
+              <% if (usuarioCurtidos.length > 0) { %>
+                <% usuarioCurtidos.forEach(curtida => { %>
+                  <% const { roteiro } = curtida %> 
+                  <%- include('./partials/pag-perfil/roteiro-visualizacao', { roteiro }) %>
+                <% }) %>
+              <% } else { %>
+                <h4 class="text-center">Nenhum roteiro curtido</h3>
+              <% } %> 
             </section>
           </div>
         </div>
