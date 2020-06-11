@@ -10,9 +10,23 @@ function getIdInt(texto='', separador) {
     return null;
 }
 
+function exibirMensagem(msg, elemento, atraso) {
+    $(elemento).append(msg);
+    setTimeout(function() {
+        $(elemento).empty();
+    }, atraso);
+}
+
+function embrulharMensagem(tag, msg) {
+    return '<' + tag + '>' + msg + '</' + tag + '>';
+}
+
 btnCurtirRoteiro.on('click', function() {
-    const idRoteiro = $(this).closest('section').attr('id');
+    const elemRoteiro = $(this).closest('section')
+    const idRoteiro = elemRoteiro.attr('id');
     const idInt = getIdInt(idRoteiro, '-');
+    const divMensagens = elemRoteiro.find('#curtir-roteiro-msg-' + idInt);
+    const ATRASO_MENSAGEM = 4000;
 
     if (Number.isInteger(idInt)) {
         $.ajax({
@@ -20,7 +34,17 @@ btnCurtirRoteiro.on('click', function() {
             method: 'POST',
             data: {
                 id: idInt,
-            }
+            },
+            success: function(data, textStatus, jqXHR) {
+                const mensagem = $().add(embrulharMensagem('p', data));
+
+                exibirMensagem(mensagem, divMensagens, ATRASO_MENSAGEM);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                const mensagem = $().add(embrulharMensagem('p', jqXHR.responseText));
+
+                exibirMensagem(mensagem, divMensagens, ATRASO_MENSAGEM);
+            },
         });
     }
 });

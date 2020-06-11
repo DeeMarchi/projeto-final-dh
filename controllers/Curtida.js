@@ -27,8 +27,9 @@ const CurtidaController = {
                 });
                 ++roteiro.likes;
                 await roteiro.save();
+                return res.status(201).send('Roteiro curtido');
             } else {
-                console.log('else code block');
+                return res.status(400).send('Você já curtiu este roteiro!');
             }
         }
         catch (erro) {

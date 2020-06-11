@@ -74,14 +74,10 @@ const UsuarioController = {
             attributes: ['id', 'nome', 'apelido', 'imagem_url'],
         });
 
-        console.log(usuarios);
-        
-
         res.render('pesquisa', {
             titulo: 'Pesquisa',
             usuariosBusca: usuarios,
         });
-
     },
 
     editar: async (req, res, next) => {
