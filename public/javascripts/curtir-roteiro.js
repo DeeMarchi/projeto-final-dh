@@ -19,8 +19,12 @@ async function gostarRoteiroPost(infoBody) {
  * @param { Node } elementoMsg Elemento para exibir no container pai
  * @param { Node } elementoPai O container onde a mensagem será inserida
  * @param { Number } atraso Um número em milissegundos indicando por quanto tempo a mensagem permanece na tela
+ * O Atraso é opcional
  */
-function exibirMensagem(elementoMsg, elementoPai, atraso) {
+function exibirMensagem(elementoMsg, elementoPai, atraso=0) {
+    if (!elementoMsg || !elementoPai) {
+        throw new TypeError('Está faltando alguns dos elementos');
+    }
     elementoPai.appendChild(elementoMsg);
     setTimeout(function() {
         elementoPai.removeChild(elementoMsg);
@@ -83,7 +87,6 @@ function acharPai(elemento, callback) {
 }
 
 function eventoCurtirRoteiro(event) {
-    const ATRASO_MSG = 3000;
     const elementoRoteiro = acharPai(event.target, function(elemento) {
         return elemento && elemento.tagName !== 'SECTION';
     });
@@ -102,6 +105,7 @@ function eventoCurtirRoteiro(event) {
     if (divMensagens.childElementCount === 0) {
         gostarRoteiroPost(info)
             .then(function(msg) {
+                const ATRASO_MSG = 3000;
                 const pMensagem = document.createElement('p');
                 pMensagem.innerText = msg;
                 
