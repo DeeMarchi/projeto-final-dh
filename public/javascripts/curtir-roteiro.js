@@ -1,50 +1,82 @@
-const btnCurtirRoteiro = $('[alt=Curtir]');
+const btnsCurtirRoteiro = document.querySelectorAll('[alt="Curtir"]');
 
-function getIdInt(texto='', separador) {
-    const i = texto.indexOf(separador);
-    if (i >= 0) {
-        const id = Number(texto.substr(i + 1));
-
-        return id;
+async function gostarRoteiroPost(infoBody) {
+    if (!infoBody) {
+        throw new TypeError('Body não pode ser vazio!');
     }
-    return null;
+
+    const res = await fetch('/curtir/roteiro/' + infoBody.id, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(infoBody),
+    });
+    const msg = await res.text();
+
+    return msg;
 }
 
-function exibirMensagem(msg, elemento, atraso) {
-    $(elemento).append(msg);
+function exibirMensagem(elementoMsg, elementoPai, atraso) {
+    elementoPai.appendChild(elementoMsg);
     setTimeout(function() {
-        $(elemento).empty();
+        elementoPai.removeChild(elementoMsg);
     }, atraso);
 }
 
-function embrulharMensagem(tag, msg) {
-    return '<' + tag + '>' + msg + '</' + tag + '>';
+function extrairIdInt(texto='', separador) {
+    const i = texto.indexOf(separador);
+    if (!texto) {
+        throw new TypeError('String para busca está vazia')
+    }
+    if (i < 0) {
+        throw new Error('Separador não encontrado');
+    }
+    return Number(texto.substr(i + 1));
 }
 
-btnCurtirRoteiro.on('click', function() {
-    const elemRoteiro = $(this).closest('section')
-    const idRoteiro = elemRoteiro.attr('id');
-    const idInt = getIdInt(idRoteiro, '-');
-    const divMensagens = elemRoteiro.find('#curtir-roteiro-msg-' + idInt);
-    const ATRASO_MENSAGEM = 4000;
-
-    if (Number.isInteger(idInt)) {
-        $.ajax({
-            url: '/curtir/roteiro/' + idInt,
-            method: 'POST',
-            data: {
-                id: idInt,
-            },
-            success: function(data, textStatus, jqXHR) {
-                const mensagem = $().add(embrulharMensagem('p', data));
-
-                exibirMensagem(mensagem, divMensagens, ATRASO_MENSAGEM);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                const mensagem = $().add(embrulharMensagem('p', jqXHR.responseText));
-
-                exibirMensagem(mensagem, divMensagens, ATRASO_MENSAGEM);
-            },
-        });
+function acharPai(elemento, callback) {
+    if (!elemento || !callback) {
+        throw new TypeError('Há algum parâmetro faltando');
     }
-});
+    if (typeof(callback) !== 'function') {
+        throw new TypeError('Callback precisa ser uma função');
+    }
+    let temp = elemento;
+
+    while (callback(temp)) {
+        temp = temp.parentNode;
+    }
+
+    return temp;
+}
+
+function eventoCurtirRoteiro(event) {
+    const ATRASO_MSG = 3000;
+    const elementoRoteiro = acharPai(event.target, function(elemento) {
+        return elemento && elemento.tagName !== 'SECTION';
+    });
+    if (!elementoRoteiro) {
+        throw new Error('roteiro não encontrado');
+    };
+    const idRoteiro = extrairIdInt(elementoRoteiro.id, '-');
+    if (!Number.isInteger(idRoteiro)) {
+        throw new Error('id do roteiro não encontrado');
+    };
+
+    const info = {
+        id: idRoteiro,
+    };
+    const divMensagens = elementoRoteiro.querySelector('#curtir-roteiro-msg-' + idRoteiro);
+    if (divMensagens.childElementCount === 0) {
+        gostarRoteiroPost(info)
+            .then(function(msg) {
+                const pMensagem = document.createElement('p');
+                pMensagem.innerText = msg;
+                
+                exibirMensagem(pMensagem, divMensagens, ATRASO_MSG);
+            });
+    }
+}
+
+for (let i = 0, len = btnsCurtirRoteiro.length; i < len; ++i) {
+    btnsCurtirRoteiro[i].addEventListener('click', eventoCurtirRoteiro);
+}
