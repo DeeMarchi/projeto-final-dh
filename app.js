@@ -10,6 +10,7 @@ const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
 const usuarioRouter = require('./routes/usuario');
 const curtidasRouter = require('./routes/curtidas');
+const newsletterRouter = require('./routes/newsletter');
 
 /* Middlewares customizados do projeto */
 const autenticado = require('./middlewares/autenticado');
@@ -47,6 +48,7 @@ app.use('/', authRouter);
 app.use('/index', autenticado, indexRouter);
 app.use('/index/perfil/:id', autenticado, tratarIdPerfil, usuarioRouter);
 app.use('/curtir', autenticado, curtidasRouter);
+app.use('/newsletter', newsletterRouter);
 
 moedasInit.guardarMoedasAPI();
 
