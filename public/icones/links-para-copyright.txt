@@ -6,3 +6,4 @@ seguir.svg				| https://www.flaticon.com/br/icone-gratis/seguidores_748004?term=
 deixar-de-seguir.svg			| https://www.flaticon.com/br/icone-gratis/deixar-de-seguir_2701228
 excluir.svg				| https://www.flaticon.com/br/icone-gratis/excluir_709519
 user.svg				| https://www.flaticon.com/free-icon/user_121693
+like.svg                | https://www.flaticon.com/free-icon/like_633991?term=like&page=1&position=18

@@ -12,6 +12,7 @@ const {
     Moeda,
     Roteiro,
     Usuario,
+    Newsletter,
 } = require('./models');
 
 const testarQueries = async () => {
@@ -26,6 +27,7 @@ const testarQueries = async () => {
         Moeda.findAll(),
         Roteiro.findAll(),
         Usuario.findAll(),
+        Newsletter.findAll(),
     ]);
 };
 
