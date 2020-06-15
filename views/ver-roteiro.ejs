@@ -42,13 +42,15 @@
 
 </form>
               <h3 class="panel-title">Comentários Recentes</h3>
-              <span class="label label-info">Total de Comentários :<%=roteiro.comentario.length  %> </span>
             </div>
             <div class="panel-body">
               <ul class="list-group">
+                <% if(typeof(roteiro.comentario) != 'undefined'){ %> 
                 <% roteiro.comentario.forEach((coment) => { %>
+                  
                   <%- include('./partials/pag-ver-roteiro/comentario',{comentario:coment}) %>
                 <% }) %>
+                <% } %> 
               </ul>
             </div>
           </section>

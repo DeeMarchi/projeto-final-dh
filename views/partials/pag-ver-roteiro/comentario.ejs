@@ -12,11 +12,23 @@
       <div class="comment-text">
         <%=comentario.conteudo%>
       </div>
-      <form action="/curtir-comentario/<%=comentario.id%> ">
+      <form action="/index/curtir-comentario/<%=comentario.id%>" method="POST">
       <div class="action">
-        <button type="submit" class="btn-xs rounded btn-primary  img-fluid" title="Like">
-          <img class ="icones-comentarios" src="icones/gostar.svg">
-        </button>
+        <% index = comentario.curtidas.findIndex(x => x.usuario_id ===  usuario.id  ) %>
+
+
+
+        <%if (index ==0) {%>
+          <button type="submit" class="btn-xs rounded btn-primary  img-fluid" title="Like">
+            <img class ="icones-comentarios" src="/icones/like.svg">
+          </button>
+        <% }else{ %> 
+          <button type="submit" class="btn-xs rounded btn-primary  img-fluid" title="Like">
+            <img class ="icones-comentarios" src="/icones/gostar.svg">
+          </button>
+          
+        <% } %> 
+        
       </div>
       </form>
     </div>

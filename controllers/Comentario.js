@@ -5,7 +5,8 @@ const {
     Dia,
     Local,
     ImagemRoteiro,
-    Comentario
+    Comentario,
+    CurtidaComentario
 } = require('../models')
 const moment = require('moment')
 const comentarioController = {
@@ -19,11 +20,20 @@ const comentarioController = {
 res.redirect('back')
     },
     curtirComentarioRoteiro: async (req, res) => {
+
       idComentario = req.params.id
 
+        
+        
         let comentario = await Comentario.findByPk(idComentario)
-        comentario.likes = ++
-        console.log(comentario)
+        comentario.likes = ++comentario.likes;
+        await comentario.save();
+
+        await CurtidaComentario.create({comentario_id:idComentario,usuario_id:req.session.usuario.id})
+
+        res.redirect('back')
+
+
 
     },
 

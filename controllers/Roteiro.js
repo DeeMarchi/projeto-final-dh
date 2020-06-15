@@ -6,7 +6,8 @@ const {
     Local,
     ImagemRoteiro,
     Comentario,
-    Usuario
+    Usuario,
+    CurtidaComentario
 } = require('../models')
 const moment = require('moment')
 const roteiroController = {
@@ -105,9 +106,9 @@ const roteiroController = {
     showRoteiro: async (req, res) => {
         let idRoteiro = req.params.id
 
-        let {
+        let 
             dataValues
-        } = await Roteiro.findOne({
+         = await Roteiro.findAll({
             where: {
                 id: idRoteiro
             },
@@ -135,14 +136,18 @@ const roteiroController = {
 
                     model: Comentario,
                     as: 'comentario',
-                    required: true,
                     include: [{
                         model: Usuario,
                         as: 'usuario',
-                        required: true,
-
-                    }]
-
+                    },
+                        {
+                          
+                        model: CurtidaComentario,
+                        as: 'curtidas',
+                        
+                        }
+                    ]
+                    
                 },
                 {
                     model: ImagemRoteiro,
@@ -153,12 +158,12 @@ const roteiroController = {
         });
 
 
-        res.render('ver-roteiro', {
-            titulo: `Roteiro ${dataValues.titulo}`,
-            roteiro: dataValues,
+         res.render('ver-roteiro', {
+            titulo: `Roteiro ${dataValues[0].dataValues}`,
+            roteiro: dataValues[0].dataValues,
             moment: moment
-        });
-        console.log(dataValues)
+        }); 
+        console.log(dataValues[0].dataValues)
 
 
 
