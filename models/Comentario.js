@@ -30,5 +30,13 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false,
     });
 
+    Comentario.associate = models => {
+       
+        Comentario.belongsTo(models.Usuario, {
+            foreignKey: 'usuario_id',
+            as: 'usuario',
+        });
+    };
+
     return Comentario;
 };

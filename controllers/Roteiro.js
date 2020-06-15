@@ -4,7 +4,9 @@ const {
     Roteiro,
     Dia,
     Local,
-    ImagemRoteiro
+    ImagemRoteiro,
+    Comentario,
+    Usuario
 } = require('../models')
 const moment = require('moment')
 const roteiroController = {
@@ -42,15 +44,17 @@ const roteiroController = {
             desc,
         } = req.body
 
-let {files} = req
+        let {
+            files
+        } = req
 
-       // console.log(files)
-        
-        
+        // console.log(files)
 
 
 
-         let roteiro = await Roteiro.create({
+
+
+        let roteiro = await Roteiro.create({
             usuario_id: req.session.usuario.id,
             estilo_id: selectEstilodaViagem,
             titulo: nomeRoteiro,
@@ -58,18 +62,21 @@ let {files} = req
             data_criacao: moment().format('YYYY-MM-DD'),
             qntd_dias: qnt,
             descricao: desc
-         });
-        
+        });
+
         if (files.length > 0) {
             files.forEach(async file => {
-                await ImagemRoteiro.create({ roteiro_id: roteiro.id,url:file.filename })
+                await ImagemRoteiro.create({
+                    roteiro_id: roteiro.id,
+                    url: file.filename
+                })
 
             });
         }
 
-        
-        
-        
+
+
+
 
         for (let i = 1; i <= qnt; i++) {
 
@@ -91,21 +98,24 @@ let {files} = req
             });
 
 
-        } 
+        }
 
 
     },
     showRoteiro: async (req, res) => {
         let idRoteiro = req.params.id
 
-  let {dataValues} = await Roteiro.findOne({
+        let {
+            dataValues
+        } = await Roteiro.findOne({
             where: {
                 id: idRoteiro
             },
+
             include: [{
                     model: Dia,
-                as: 'dia',
-                required: true,
+                    as: 'dia',
+                    required: true,
 
                     include: [{
                         model: Local,
@@ -113,7 +123,7 @@ let {files} = req
                         required: true,
 
                     }]
-            },
+                },
                 {
                     model: Estilo,
                     as: 'estilo',
@@ -122,19 +132,32 @@ let {files} = req
 
                 },
                 {
+
+                    model: Comentario,
+                    as: 'comentario',
+                    required: true,
+                    include: [{
+                        model: Usuario,
+                        as: 'usuario',
+                        required: true,
+
+                    }]
+
+                },
+                {
                     model: ImagemRoteiro,
                     as: 'imagens',
                 }
 
             ]
-  });
-        
-        
-   res.render('ver-roteiro', {
-    titulo: `Roteiro ${dataValues.titulo}`,
-      roteiro: dataValues,
-    moment:moment
-  }); 
+        });
+
+
+        res.render('ver-roteiro', {
+            titulo: `Roteiro ${dataValues.titulo}`,
+            roteiro: dataValues,
+            moment: moment
+        });
         console.log(dataValues)
 
 

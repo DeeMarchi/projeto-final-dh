@@ -27,16 +27,29 @@
           <section class="panel panel-default widget mb-5">
             <div class="panel-heading mb-2">
               <span class="glyphicon glyphicon-comment"></span>
+          
+<form method="POST" action="/index/comentar-roteiro/<%=roteiro.id%>"  class="mb-4">
+  <div class="d-inline-block">
+    <h3 class="panel-title">Comente Aqui</h3>
+  </div>
+  <div class="d-inline-block">
+    <button type="submit" class="btn-padrao btn  mb-2 ml-3 ">Comentar</button>
+
+  </div>
+
+  
+    <textarea name="comentario" class="form-control col-4" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+</form>
               <h3 class="panel-title">Comentários Recentes</h3>
-              <span class="label label-info">78</span>
+              <span class="label label-info">Total de Comentários :<%=roteiro.comentario.length  %> </span>
             </div>
             <div class="panel-body">
               <ul class="list-group">
-                <% for (let i = 0; i < 4; ++i) { %>
-                  <%- include('./partials/pag-ver-roteiro/comentario') %>
-                <% } %> 
+                <% roteiro.comentario.forEach((coment) => { %>
+                  <%- include('./partials/pag-ver-roteiro/comentario',{comentario:coment}) %>
+                <% }) %>
               </ul>
-              <a href="#" class="btn btn-padrao btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> Mais Comentários</a>
             </div>
           </section>
         </div>
