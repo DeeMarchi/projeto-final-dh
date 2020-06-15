@@ -39,6 +39,5 @@ router.post('/curtir-comentario/:id', comentarioRoteiroController.curtirComentar
 router.get('/roteiro/:id', RoteiroController.showRoteiro);
 
 
-curtirComentarioRoteiro
 
 module.exports = router;

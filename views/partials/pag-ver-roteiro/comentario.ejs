@@ -12,14 +12,13 @@
       <div class="comment-text">
         <%=comentario.conteudo%>
       </div>
+      <form action="/curtir-comentario/<%=comentario.id%> ">
       <div class="action">
-        <button type="button" class="btn-xs rounded btn-primary  img-fluid" title="Like">
+        <button type="submit" class="btn-xs rounded btn-primary  img-fluid" title="Like">
           <img class ="icones-comentarios" src="icones/gostar.svg">
         </button>
-        <button type="button" class=" rounded btn-success btn-xs" title="Responder">
-          <img class ="icones-comentarios" src="icones/reply.svg">
-        </button>
       </div>
+      </form>
     </div>
   </article>
 </li>
