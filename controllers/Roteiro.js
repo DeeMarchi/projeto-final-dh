@@ -9,6 +9,8 @@ const {
     Usuario,
     CurtidaComentario
 } = require('../models')
+
+const { Op } = require('sequelize');
 const moment = require('moment')
 const roteiroController = {
 
@@ -169,8 +171,37 @@ const roteiroController = {
 
 
 
-    }
+    },
 
+    buscarRoteiros: async (req, res, next) => {
+        console.log(req.body);
+        const { roteirosCheck, roteirosParaBuscar } = req.body;
+        const listaRoteiros = roteirosParaBuscar.split(' ');
+        let roteiros;
+
+        if (roteirosParaBuscar && roteirosCheck) {
+            /* A linha abaixo basicamente serve como um 'OR' com todas as palavras recebidas como parâmetro */
+            const nomesRegex = listaRoteiros.join('|');
+
+            try {
+                roteiros = await Roteiro.findAll({
+                    where: {
+                        titulo: {
+                            [Op.regexp]: nomesRegex,
+                        },
+                    },
+                });
+            } catch (erro) {
+                console.log(erro.msg);
+                return res.status(500).send('Ocorreu um erro no servidor');
+            }
+        } else {
+            roteiros = [];
+        }
+
+        res.locals.roteiros = roteiros;
+        next();
+    },
 };
 
 module.exports = roteiroController;

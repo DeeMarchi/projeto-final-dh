@@ -18,21 +18,32 @@
             <%- include('./partials/pag-pesquisa/form-busca') %>
             <section class="mb-5">
               <h2 class="text-center">Roteiros</h2>
+              <% if (typeof(roteiros) !== 'undefined') { %> 
+                <% if (roteiros.length > 0) { %>
+                  <% roteiros.forEach(roteiro => { %>
+                    <%- include('./partials/pag-perfil/roteiro-visualizacao', { roteiro }) %>
+                  <% }) %>
+                <% } else { %>
+                  <h3>Nenhum resultado</h3>
+                <% } %>
+              <% } %> 
               <% for (let i = 0; i < 5; ++i) { %>
                 <%#- include('./partials/pag-perfil/roteiro-visualizacao') %>
               <% } %>
             </section>
             <section class="my-5">
               <h2 class="text-center">Usuários</h2>
-              <div class="row justify-content-center">
-                <% if (typeof(usuariosBusca) !== 'undefined' && usuariosBusca.length > 0) { %>
-                  <% usuariosBusca.forEach(usuarioBusca => { %>
-                    <%- include('./partials/pag-pesquisa/card-usuario', { usuarioBusca }) %> 
-                  <% }); %>
-                <% } else { %>
-                  <h3>Nenhum resultado</h3>
-                <% } %> 
-              </div>
+              <% if (typeof(usuariosBusca) !== 'undefined') { %>
+                <div class="row justify-content-center">
+                  <% if (usuariosBusca.length > 0) { %>
+                    <% usuariosBusca.forEach(usuarioBusca => { %>
+                      <%- include('./partials/pag-pesquisa/card-usuario', { usuarioBusca }) %> 
+                    <% }); %>
+                  <% } else { %>
+                    <h3>Nenhum resultado</h3>
+                  <% } %> 
+                </div>
+              <% } %> 
             </section>
           </div>
         </div>

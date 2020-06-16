@@ -1,23 +1,23 @@
 <section class="my-4">
   <h2 class="text-center text-uppercase m-3">Filtros</h2>
   <form action="/index/pesquisa" method="POST">
-    <div class="d-flex justify-content-center flex-wrap">
-      <div class="card w-75 mx-2 max-width-340p my-1">
-        <div class="input-group-prepend p-1 justify-content-center">
-          <input class="checkbox-lg my-auto" type="checkbox" name="filtros" id="roteiros">
-          <label class="my-auto ml-2" for="roteiros">Roteiros</label>
-        </div>
+    <div class="card w-75 mx-auto max-width-340p my-1">
+      <div class="input-group-prepend p-1 justify-content-center">
+        <input class="checkbox-lg my-auto" type="checkbox" name="roteirosCheck" id="roteiros" checked>
+        <label class="my-auto ml-2" for="roteiros">Roteiros</label>
       </div>
-      <div class="card w-75 mx-2 max-width-340p my-1">
-        <div class="input-group-prepend p-1 justify-content-center">
-          <input class="checkbox-lg my-auto" type="checkbox" name="filtros" id="usuarios">
-          <label class="my-auto ml-2" for="usuarios">Usuarios</label>
-        </div>
+    </div>
+    <div class="card w-75 mx-auto max-width-340p my-1">
+      <div class="input-group-prepend p-1 justify-content-center">
+        <input class="checkbox-lg my-auto" type="checkbox" name="usuariosCheck" id="usuarios" checked>
+        <label class="my-auto ml-2" for="usuarios">Usuarios</label>
       </div>
     </div>
     <div class="form-group my-2 mx-auto text-center w-100 max-width-340p px-4">
-      <input class="form-control rounded-pill border-dark text-center" type="text" name="nomeParaBuscar" id="nome-para-buscar"
-          placeholder="buscar usuario/roteiro" aria-label="Busca de roteiros ou usuários">
+      <input class="form-control rounded-pill border-dark text-center" type="text" name="nomesParaBuscar" id="nome-para-buscar"
+          placeholder="buscar usuario" aria-label="Busca de usuários">
+      <input class="form-control rounded-pill border-dark text-center mt-2" type="text" name="roteirosParaBuscar" id="roteiro-para-buscar"
+          placeholder="buscar roteiro" aria-label="Busca de roteiros">
       <button class="btn btn-padrao rounded-pill my-2 mx-auto" type="submit">Buscar</button>
     </div>
   </form>

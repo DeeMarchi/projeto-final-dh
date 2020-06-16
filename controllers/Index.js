@@ -39,11 +39,15 @@ const IndexController = {
     },
 
     pesquisa: (req, res) => {
+        const { usuariosBusca } = res.locals;
+        const { roteiros } = res.locals;
+
         res.render('Pesquisa', {
             titulo: 'Pesquisa',
+            usuariosBusca,
+            roteiros,
         });
     },
-
 };
 
 module.exports = IndexController;

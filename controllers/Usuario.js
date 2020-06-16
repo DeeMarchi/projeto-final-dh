@@ -51,33 +51,42 @@ const UsuarioController = {
         next();
     },
 
-    buscar: async (req, res) => {
-        const nomesDeBusca = req.body.nomeParaBuscar.split(' ');
+    buscar: async (req, res, next) => {
+        const { usuariosCheck, nomesParaBuscar } = req.body;
+        const listaNomes = nomesParaBuscar.split(' ');
+        let usuarios;
 
-        /* A linha abaixo basicamente serve como um 'OR' com todas as palavras recebidas como parâmetro */
-        const nomesRegex = nomesDeBusca.join('|');
+        if (nomesParaBuscar && usuariosCheck) {
+            /* A linha abaixo basicamente serve como um 'OR' com todas as palavras recebidas como parâmetro */
+            const nomesRegex = listaNomes.join('|');
 
-        const usuarios = await Usuario.findAll({
-            where: {
-                [Op.or]: [{
-                        nome: {
-                            [Op.regexp]: nomesRegex,
-                        }
+            try {
+                usuarios = await Usuario.findAll({
+                    where: {
+                        [Op.or]: [{
+                                nome: {
+                                    [Op.regexp]: nomesRegex,
+                                }
+                            },
+                            {
+                                apelido: {
+                                    [Op.regexp]: nomesRegex,
+                                }
+                            },
+                        ],
                     },
-                    {
-                        apelido: {
-                            [Op.regexp]: nomesRegex,
-                        }
-                    },
-                ],
-            },
-            attributes: ['id', 'nome', 'apelido', 'imagem_url'],
-        });
+                    attributes: ['id', 'nome', 'apelido', 'imagem_url'],
+                });
+            } catch (erro) {
+                console.log(erro.msg);
+                return res.status(500).send('Ocorreu um erro no servidor');
+            }
+        } else {
+            usuarios = [];
+        }
 
-        res.render('pesquisa', {
-            titulo: 'Pesquisa',
-            usuariosBusca: usuarios,
-        });
+        res.locals.usuariosBusca = usuarios;
+        next();        
     },
 
     editar: async (req, res, next) => {
@@ -146,7 +155,6 @@ const UsuarioController = {
             return res.redirect(`/index/perfil/${id}`);
         }
     }
-
 };
 
 module.exports = UsuarioController;

@@ -28,7 +28,7 @@ router.get('/', IndexController.home);
 router.get('/sobre', IndexController.sobre);
 
 router.get('/pesquisa', IndexController.pesquisa);
-router.post('/pesquisa', UsuarioController.buscar);
+router.post('/pesquisa', UsuarioController.buscar, RoteiroController.buscarRoteiros, IndexController.pesquisa);
 
 router.get('/criar-roteiro', RoteiroController.criaRoteiro);
 router.post('/criar-roteiro', upload.any(), RoteiroController.criarRoteiro);
