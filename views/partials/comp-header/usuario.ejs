@@ -1,7 +1,7 @@
 <div class="d-flex flex-wrap flex-column flex-md-row justify-content-center align-items-center">
   <article class="bg-white text-dark text-break rounded-lg d-flex justify-content-between my-auto mr-2">
-    <a href="/index/perfil/<%= usuario.id %>">
-      <img class="rounded-lg seguidores-icone" src="<%= usuario.imagem_url %>" alt="Foto de <%= usuario.nome %>">
+    <a class="seguidores-icone" href="/index/perfil/<%= usuario.id %>">
+      <img class="rounded-lg" src="<%= usuario.imagem_url %>" alt="Foto de <%= usuario.nome %>">
     </a>
     <p class="my-auto mx-4"><%= usuario.apelido %></p>
   </article>
