@@ -8,54 +8,46 @@
 
   <body>
     <%- include('./partials/header') %>
-    
-    <div class="row m-0">
-      <div class="d-none d-xl-block col-xl-2">
-        <%- include('./partials/side-bar') %>
-      </div>
-      <div class="col">
-        <div class="container my-5">
-          <%- include('./partials/pag-ver-roteiro/header') %>
-          
-          <% roteiro.dia.forEach((dia,qnt) => { %>
-            <%- include('./partials/pag-ver-roteiro/card-dia',{dia:dia,qnt:++qnt}) %>
-          <% }) %>
-    
-          
-            <%- include('./partials/pag-ver-roteiro/imagens') %>
-    
-          <section class="panel panel-default widget mb-5">
-            <div class="panel-heading mb-2">
-              <span class="glyphicon glyphicon-comment"></span>
-          
-<form method="POST" action="/index/comentar-roteiro/<%=roteiro.id%>"  class="mb-4">
-  <div class="d-inline-block">
-    <h3 class="panel-title">Comente Aqui</h3>
-  </div>
-  <div class="d-inline-block">
-    <button type="submit" class="btn-padrao btn  mb-2 ml-3 ">Comentar</button>
+    <div class="container my-5">
+      <%- include('./partials/pag-ver-roteiro/header') %>
+      
+      <% roteiro.dia.forEach((dia,qnt) => { %>
+        <%- include('./partials/pag-ver-roteiro/card-dia',{dia:dia,qnt:++qnt}) %>
+      <% }) %>
 
-  </div>
+      
+        <%- include('./partials/pag-ver-roteiro/imagens') %>
 
-  
-    <textarea name="comentario" class="form-control col-4" id="exampleFormControlTextarea1" rows="3"></textarea>
-
-</form>
-              <h3 class="panel-title">Comentários Recentes</h3>
+      <section class="panel panel-default widget mb-5">
+        <div class="panel-heading mb-2">
+          <span class="glyphicon glyphicon-comment"></span>
+      
+          <form method="POST" action="/index/comentar-roteiro/<%=roteiro.id%>"  class="mb-4">
+            <div class="d-inline-block">
+              <h3 class="panel-title">Comente Aqui</h3>
             </div>
-            <div class="panel-body">
-              <ul class="list-group">
-                <% if(typeof(roteiro.comentario) != 'undefined'){ %> 
-                <% roteiro.comentario.forEach((coment) => { %>
-                  
-                  <%- include('./partials/pag-ver-roteiro/comentario',{comentario:coment}) %>
-                <% }) %>
-                <% } %> 
-              </ul>
+            <div class="d-inline-block">
+              <button type="submit" class="btn-padrao btn  mb-2 ml-3 ">Comentar</button>
+
             </div>
-          </section>
+
+            
+              <textarea name="comentario" class="form-control col-4" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+          </form>
+          <h3 class="panel-title">Comentários Recentes</h3>
         </div>
-      </div>
+        <div class="panel-body">
+          <ul class="list-group">
+            <% if(typeof(roteiro.comentario) != 'undefined'){ %> 
+            <% roteiro.comentario.forEach((coment) => { %>
+              
+              <%- include('./partials/pag-ver-roteiro/comentario',{comentario:coment}) %>
+            <% }) %>
+            <% } %> 
+          </ul>
+        </div>
+      </section>
     </div>
     <%- include('./partials/footer') %>
     <%- include('./partials/scripts-body') %>
