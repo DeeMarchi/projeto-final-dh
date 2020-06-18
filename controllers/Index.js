@@ -48,6 +48,11 @@ const IndexController = {
             roteiros,
         });
     },
+
+    sair: (req, res) => {
+        req.session.usuario = undefined;
+        res.redirect('/');
+    },
 };
 
 module.exports = IndexController;

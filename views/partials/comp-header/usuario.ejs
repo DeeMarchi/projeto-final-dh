@@ -1,6 +1,11 @@
-<article class="bg-white text-dark text-break rounded-lg d-flex justify-content-between mt-1">
-  <a href="/index/perfil/<%= usuario.id %>">
-    <img class="seguidores-icone" src="<%= usuario.imagem_url %>" alt="Foto de <%= usuario.nome %>">
-  </a>
-  <p class="my-auto ml-1"><%= usuario.apelido %></p>
-</article>
+<div class="d-flex flex-wrap flex-column flex-md-row justify-content-center align-items-center">
+  <article class="bg-white text-dark text-break rounded-lg d-flex justify-content-between my-auto mr-2">
+    <a href="/index/perfil/<%= usuario.id %>">
+      <img class="rounded-lg seguidores-icone" src="<%= usuario.imagem_url %>" alt="Foto de <%= usuario.nome %>">
+    </a>
+    <p class="my-auto mx-4"><%= usuario.apelido %></p>
+  </article>
+  <form class="my-2 my-md-auto" action="/index/sair" method="POST">
+    <button class="btn btn-padrao rounded-pill" type="submit">Sair</button>
+  </form>
+</div>

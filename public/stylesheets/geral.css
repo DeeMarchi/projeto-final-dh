@@ -38,13 +38,13 @@ body {
 }
 
 .header-icone {
-    height: 4rem;
+    height: auto;
     width: 4rem;
 }
 
 .seguidores-icone {
-    height: 2rem;
-    width: 2rem;
+    height: auto;
+    width: 4.5rem;
 }
 
 .roteiro-icone {

@@ -8,21 +8,14 @@
 	<body>
     <%- include('./partials/header') %>
 		<main>
-      <div class="row m-0">
-        <div class="d-none d-xl-block col-xl-2">
-          <%- include('./partials/side-bar') %>
-        </div>
-        <div class="col">
-          <div class="container my-5">
-            <% if (roteiros.length > 0) { %>
-              <% roteiros.forEach(roteiro => { %>
-                <%- include('./partials/pag-home/card-roteiro', { roteiro, moment }) %> 
-              <% }) %>
-            <% } else { %>
-              <h2 class="text-center text-uppercase">Nenhum roteiro cadastrado no sistema</h2>
-            <% } %> 
-          </div>
-        </div>
+      <div class="container my-5">
+        <% if (roteiros.length > 0) { %>
+          <% roteiros.forEach(roteiro => { %>
+            <%- include('./partials/pag-home/card-roteiro', { roteiro, moment }) %> 
+          <% }) %>
+        <% } else { %>
+          <h2 class="text-center text-uppercase">Nenhum roteiro cadastrado no sistema</h2>
+        <% } %> 
       </div>
     </main>
     
