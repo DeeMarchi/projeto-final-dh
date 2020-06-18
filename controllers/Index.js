@@ -1,7 +1,8 @@
 const {
     Roteiro,
     Estilo,
-    Usuario
+    Usuario,
+    ImagemRoteiro,
 } = require('../models');
 
 const moment = require ('moment')
@@ -18,6 +19,9 @@ const IndexController = {
                     model: Estilo,
                     as: 'estilo',
                     required: true,
+                }, {
+                    model: ImagemRoteiro,
+                    as: 'imagens',
                 },
             ],
             order: [
