@@ -1,12 +1,5 @@
 <article class="card-header">
-  <div class="d-flex justify-content-between align-items-center">
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="text-center text-lg-left">
-        <p class="my-1 my-lg-auto btn rounded-pills card-resumo-roteiro text-center text-lg-left"><%= roteiro.qntd_dias %> Dias</p>
-      </div>
-    </div>
-  </div>
-  <div class="row mt-2 align-items-center">
+  <div class="row mt-2 align-items-center mb-2">
     <div class="col-sm-12 col-md-4">
       <div class="d-flex align-items-center">
         <div class="mr-2">
@@ -19,6 +12,15 @@
         </div>
       </div>
     </div>
+  
+  </div>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="text-center text-lg-left">
+        <p class="my-1 my-lg-auto btn rounded-pills card-resumo-roteiro text-center text-lg-left"><%= roteiro.qntd_dias %> Dias</p>
+      </div>
+      
+    </div>
     <div class="col-sm-12 col-md-4">
       <p class="my-1 my-lg-auto text-center">Estilo da viagem: <%= roteiro.estilo.nome %></p>
     </div>
@@ -26,4 +28,5 @@
       <p class="my-1 my-lg-auto text-center">Data de início: <%= moment(roteiro.data_inicio).format('L') %> </p>
     </div>
   </div>
+  
 </article>

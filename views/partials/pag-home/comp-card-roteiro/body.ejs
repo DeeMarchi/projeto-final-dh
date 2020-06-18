@@ -1,13 +1,15 @@
 <article class="card-body">
-  <% if (roteiro.imagens.length > 0) { %> 
-    <div class="mb-4 text-center">
-      <img class="img-fluid img-roteiro-feed" src="/imagens/<%= roteiro.imagens[0].url %>" alt="Primeira imagem roteiro">
-    </div>
-  <% } %>
   <a class="card-link text-dark" href="/index/roteiro/<%= roteiro.id %>">
     <h3 class="card-title text-uppercase">
       <strong><%= roteiro.titulo %></strong>
     </h3>
   </a>
   <p class="card-text"><%= roteiro.descricao %></p>
+  <% if (roteiro.imagens.length > 0) { %> 
+    <div class="mb-4 text-center">
+      
+      <img class="img-fluid img-roteiro-feed" src="/imagens/<%= roteiro.imagens[0].url %>" alt="Primeira imagem roteiro">
+    </div>
+  <% } %>
+ 
 </article>

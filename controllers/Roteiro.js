@@ -102,7 +102,8 @@ const roteiroController = {
 
 
         }
-
+        res.redirect(`/index/roteiro/${roteiro.id}`)
+        
 
     },
     showRoteiro: async (req, res) => {
