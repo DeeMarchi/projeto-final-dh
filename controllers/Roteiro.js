@@ -174,6 +174,34 @@ const roteiroController = {
 
     },
 
+    exluirRoteiro: async (req, res, next) => {
+        const { usuario } = req.session;
+        const { idRoteiro } = res.locals;
+
+        if (res.statusCode !== 200) {
+            return next();
+        }
+
+        try {
+            const roteiro = await Roteiro.findOne({
+                where: {
+                    id: idRoteiro,
+                    usuario_id: usuario.id,
+                },
+            });
+            if (!roteiro) {
+                return res.status(403).send('Ação não permitida!');
+            }
+            roteiro.ativo = false;
+            await roteiro.save();
+        } catch (erro) {
+            console.log(erro.msg);
+            return res.status(500).send('Ocorreu um erro no servidor!');
+        }
+        
+        return res.redirect(`/index/perfil/${usuario.id}/editar`);
+    },
+
     buscarRoteiros: async (req, res, next) => {
         console.log(req.body);
         const { roteirosCheck, roteirosParaBuscar } = req.body;

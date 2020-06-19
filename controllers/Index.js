@@ -11,6 +11,9 @@ const IndexController = {
 
     home: async (req, res) => {
         const roteiros = await Roteiro.findAll({
+            where: {
+                ativo: true,
+            },
             include: [{
                     model: Usuario,
                     as: 'usuario',

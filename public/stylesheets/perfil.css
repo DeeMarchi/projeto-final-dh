@@ -3,6 +3,11 @@
     color: #FFF;
 }
 
+.excluir-icone {
+    height: 2.25rem;
+    width: 2.25rem;
+}
+
 .descricao{
     max-width: 940px;
 }

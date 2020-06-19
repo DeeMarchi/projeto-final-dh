@@ -18,24 +18,31 @@ const CHARS_PROIBIDOS_REGEX = `[<>/\(\)'";]`;
 const UsuarioController = {
 
     perfil: async (req, res, next) => {
-        const { idPerfil } = res.locals;
+        const {
+            idPerfil
+        } = res.locals;
 
         if (res.statusCode === 200) {
             const usuario = await Usuario.findByPk(idPerfil, {
-                include: [
-                    {
+                include: [{
+                    model: Roteiro,
+                    as: 'roteiro',
+                    where: {
+                        ativo: true,
+                    },
+                    required: false,
+                }, {
+                    model: Curtida,
+                    as: 'curtida',
+                    include: {
                         model: Roteiro,
                         as: 'roteiro',
-                    }, {
-                        model: Curtida,
-                        as: 'curtida',
-                        include: {
-                            model: Roteiro,
-                            as: 'roteiro',
-                            required: true,
+                        where: {
+                            ativo: true,
                         },
+                        required: false,
                     },
-                ],
+                }, ],
             });
             const usuarioRoteiros = usuario.roteiro;
 
@@ -52,7 +59,10 @@ const UsuarioController = {
     },
 
     buscar: async (req, res, next) => {
-        const { usuariosCheck, nomesParaBuscar } = req.body;
+        const {
+            usuariosCheck,
+            nomesParaBuscar
+        } = req.body;
         const listaNomes = nomesParaBuscar.split(' ');
         let usuarios;
 
@@ -77,20 +87,24 @@ const UsuarioController = {
                     },
                     attributes: ['id', 'nome', 'apelido', 'imagem_url'],
                 });
-            } catch (erro) {
+            }
+            catch (erro) {
                 console.log(erro.msg);
                 return res.status(500).send('Ocorreu um erro no servidor');
             }
-        } else {
+        }
+        else {
             usuarios = [];
         }
 
         res.locals.usuariosBusca = usuarios;
-        next();        
+        next();
     },
 
     editar: async (req, res, next) => {
-        const { idPerfil } = res.locals;
+        const {
+            idPerfil
+        } = res.locals;
 
         if (res.statusCode === 200) {
             const usuario = await Usuario.findByPk(idPerfil);
@@ -113,22 +127,28 @@ const UsuarioController = {
 
     valicadoes: [
         check(CAMPO_NOVO_RESUMO)
-            .isLength({ max: 2000 })
-            .withMessage(`o campo ${CAMPO_NOVO_RESUMO} não pode conter mais que 2000 caractéres`)
-            .bail()
-            .not().matches(CHARS_PROIBIDOS_REGEX)
-            .withMessage(`o campo ${CAMPO_NOVO_RESUMO} contém caractéres proibídos!`),
+        .isLength({
+            max: 2000
+        })
+        .withMessage(`o campo ${CAMPO_NOVO_RESUMO} não pode conter mais que 2000 caractéres`)
+        .bail()
+        .not().matches(CHARS_PROIBIDOS_REGEX)
+        .withMessage(`o campo ${CAMPO_NOVO_RESUMO} contém caractéres proibídos!`),
     ],
 
     atualizar: async (req, res) => {
-        const { id } = req.session.usuario;
+        const {
+            id
+        } = req.session.usuario;
         let pathEstatico;
-        
+
         /* pega o path estático /avatar/usuarioID.png sem dependência de plataforma (path.sep) */
         if (req.file) {
             pathEstatico = req.file.path.substr(req.file.path.indexOf(path.sep));
         }
-        const { novoResumo } = req.body;
+        const {
+            novoResumo
+        } = req.body;
 
         const listaErros = validationResult(req);
 
@@ -141,17 +161,18 @@ const UsuarioController = {
             return res.render('perfil-editar', {
                 titulo: 'Editar | Erro',
                 usuarioPagina: req.session.usuario,
-                erros: listaErros.errors ,
+                erros: listaErros.errors,
             });
-        } else {
+        }
+        else {
             const usuarioUpdate = await Usuario.findByPk(id);
-    
+
             if (pathEstatico) {
                 usuarioUpdate.imagem_url = pathEstatico;
             }
             usuarioUpdate.resumo = novoResumo;
             await usuarioUpdate.save();
-    
+
             return res.redirect(`/index/perfil/${id}`);
         }
     }
