@@ -111,6 +111,7 @@ const UsuarioController = {
             const usuarioRoteiros = await Roteiro.findAll({
                 where: {
                     usuario_id: idPerfil,
+                    ativo: true,
                 },
             });
 

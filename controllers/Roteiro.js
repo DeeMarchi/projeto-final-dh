@@ -15,29 +15,16 @@ const moment = require('moment')
 const roteiroController = {
 
     criaRoteiro: async (req, res) => {
-        let {
-            selectEstilodaViagem,
-            nomeRoteiro,
-            dataViagem,
-            qnt,
-            relato,
-            locais,
-            selectMoeda
-        } = req.body
-        estilos = await Estilo.findAll({
-            raw: true
-        });
-        moedas = await Moeda.findAll({
-            raw: true
-        })
+        estilos = await Estilo.findAll();
+        moedas = await Moeda.findAll();
 
-        console.log(req.body)
         res.render('criar-roteiro', {
             titulo: 'Criar Roteiro',
             estilosViagem: estilos,
             moedaViagem: moedas
         });
     },
+
     criarRoteiro: async (req, res) => {
         let {
             selectEstilodaViagem,
@@ -45,17 +32,11 @@ const roteiroController = {
             dataViagem,
             qnt,
             desc,
-        } = req.body
+        } = req.body;
 
         let {
             files
-        } = req
-
-        // console.log(files)
-
-
-
-
+        } = req;
 
         let roteiro = await Roteiro.create({
             usuario_id: req.session.usuario.id,
@@ -72,106 +53,86 @@ const roteiroController = {
                 await ImagemRoteiro.create({
                     roteiro_id: roteiro.id,
                     url: file.filename
-                })
-
+                });
             });
         }
-
-
-
-
-
         for (let i = 1; i <= qnt; i++) {
-
             let dia = await Dia.create({
                 resumo: req.body['relato' + i],
                 gasto: req.body['valor' + i],
                 moeda_id: req.body['selectMoeda' + i],
                 roteiro_id: roteiro.id
-            })
+            });
 
             localSeparado = req.body['locais' + i].split(",");
-
             localSeparado.forEach(async element => {
                 await Local.create({
                     nome: element,
                     dia_id: dia.dataValues.id
-                })
-
+                });
             });
-
-
         }
-        res.redirect(`/index/roteiro/${roteiro.id}`)
-        
-
+        res.redirect(`/index/roteiro/${roteiro.id}`);
     },
-    showRoteiro: async (req, res) => {
-        let idRoteiro = req.params.id
 
-        let 
-            dataValues
-         = await Roteiro.findAll({
-            where: {
-                id: idRoteiro
-            },
+    showRoteiro: async (req, res, next) => {
+        const idRoteiro = req.params.id;
 
-            include: [{
-                    model: Dia,
-                    as: 'dia',
-                    required: true,
-
-                    include: [{
-                        model: Local,
-                        as: 'local',
+        try {
+            const roteiro = await Roteiro.findOne({
+                where: {
+                    id: idRoteiro,
+                    ativo: true,
+                },
+                include: [
+                    {
+                        model: Dia,
+                        as: 'dia',
                         required: true,
-
-                    }]
-                },
-                {
-                    model: Estilo,
-                    as: 'estilo',
-                    required: true,
-
-
-                },
-                {
-
-                    model: Comentario,
-                    as: 'comentario',
-                    include: [{
-                        model: Usuario,
-                        as: 'usuario',
+                        include: [{
+                            model: Local,
+                            as: 'local',
+                            required: true,
+                        }],
                     },
-                        {
-                          
-                        model: CurtidaComentario,
-                        as: 'curtidas',
-                        
-                        }
-                    ]
-                    
-                },
-                {
-                    model: ImagemRoteiro,
-                    as: 'imagens',
-                }
-
-            ]
-        });
-
-
-         res.render('ver-roteiro', {
-            titulo: `Roteiro ${dataValues[0].dataValues}`,
-            roteiro: dataValues[0].dataValues,
-            moment: moment
-        }); 
-        console.log(dataValues[0].dataValues)
-
-
-
-
-
+                    {
+                        model: Estilo,
+                        as: 'estilo',
+                        required: true,
+                    },
+                    {
+                        model: Comentario,
+                        as: 'comentario',
+                        include: [{
+                            model: Usuario,
+                            as: 'usuario',
+                        },
+                            {
+                                model: CurtidaComentario,
+                                as: 'curtidas',
+                            },
+                        ],
+                    },
+                    {
+                        model: ImagemRoteiro,
+                        as: 'imagens',
+                    },
+                ],
+            });
+            if (!roteiro) {
+                res.status(404);
+                return next();
+            }
+    
+            res.render('ver-roteiro', {
+                titulo: `Roteiro ${roteiro.titulo}`,
+                roteiro: roteiro,
+                moment: moment
+            });
+        } catch (erro) {
+            console.log(erro.msg);
+            return res.status(500).send('Erro no servidor');
+        }
     },
 
     exluirRoteiro: async (req, res, next) => {
@@ -218,6 +179,7 @@ const roteiroController = {
                         titulo: {
                             [Op.regexp]: nomesRegex,
                         },
+                        ativo: true,
                     },
                 });
             } catch (erro) {
