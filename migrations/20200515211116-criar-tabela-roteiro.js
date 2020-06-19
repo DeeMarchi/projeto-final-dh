@@ -49,6 +49,11 @@ module.exports = {
                 type: Sequelize.INTEGER,
                 defaultValue: 0,
             },
+            ativo: {
+                type: Sequelize.BOOLEAN,
+                defaultValue: true,
+                allowNull: false,
+            },
         });
     },
 
