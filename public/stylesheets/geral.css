@@ -74,6 +74,7 @@ body {
     color: aqua;
 }
 
+
 /* 1200px == --breakpoint-xl */
 @media only screen and (max-width: 1200px) {
     .w-75 {
