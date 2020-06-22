@@ -1,6 +1,17 @@
 <row>
-<h1 ><%=roteiro.titulo.toUpperCase()%></h1>
-<p><%=roteiro.likes  %>  Like(s)</p>
+    <h1 ><%=roteiro.titulo.toUpperCase()%></h1>
+
+    <div class="fb-share-button button mb-2" 
+    data-href="http:/dominio/index/roteiro/<%=roteiro.id%>" 
+    data-layout="button"
+   >
+ </div>
+ <a href="https://twitter.com/share?url=http:/dominio/index/roteiro/<%=roteiro.id%>&text=Olha que viagem legal <%=roteiro.titulo%>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><img src="/icones/twitter.png"></a>
+
+    <p><%=roteiro.likes  %>  Like(s)</p>
+  
+
+
 </row>
 <div class="row">
   <div class="col-sm-12 col-lg-4 ">
@@ -16,3 +27,11 @@
     <p><%=roteiro.qntd_dias%></p>
   </div>
 </div>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
