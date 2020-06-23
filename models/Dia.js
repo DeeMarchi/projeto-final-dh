@@ -34,7 +34,11 @@ module.exports = function(sequelize, DataTypes) {
         Dia.hasMany(models.Local, {
             foreignKey: 'dia_id',
             as: 'local'
-        })
+        }),
+        Dia.belongsTo(models.Moeda, {
+            foreignKey: 'moeda_id',
+            as: 'moeda',
+        });
     };
     return Dia;
 };

@@ -21,6 +21,7 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'moeda',
         timestamps: false,
     });
+    
 
     return Moeda;
 };
