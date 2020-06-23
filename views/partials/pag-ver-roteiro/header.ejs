@@ -1,6 +1,8 @@
 <div class="row mt-1 mb-3">
   
- <a href="/index/perfil/<%= usuario.id %>"> <img class="bg-white p-1 rounded-circle  seguidores-icone " src="<%= usuario.imagem_url %>" alt="Foto de <%= usuario.nome %>"></a><strong><p><%=roteiro.usuario.apelido%></p></strong>
+ <a href="/index/perfil/<%= roteiro.usuario.id %>"> 
+  <img class="bg-white p-1 rounded-circle  seguidores-icone " src="<%= roteiro.usuario.imagem_url %>" alt="Foto de <%= roteiro.usuario.nome %>">
+</a><strong><p><%=roteiro.usuario.apelido%></p></strong>
 
 </div>
    <h1 ><%=roteiro.titulo.toUpperCase()%></h1>
