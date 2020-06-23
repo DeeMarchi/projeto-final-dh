@@ -26,6 +26,7 @@ res.redirect('back')
         
         
         let comentario = await Comentario.findByPk(idComentario)
+        
         comentario.likes = ++comentario.likes;
         await comentario.save();
 

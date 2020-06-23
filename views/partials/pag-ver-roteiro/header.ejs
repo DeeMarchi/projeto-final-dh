@@ -1,7 +1,11 @@
-<row>
-    <h1 ><%=roteiro.titulo.toUpperCase()%></h1>
+<div class="row mt-1 mb-3">
+  
+ <a href="/index/perfil/<%= usuario.id %>"> <img class="bg-white p-1 rounded-circle  seguidores-icone " src="<%= usuario.imagem_url %>" alt="Foto de <%= usuario.nome %>"></a><strong><p><%=roteiro.usuario.apelido%></p></strong>
 
-    <div class="fb-share-button button mb-2" 
+</div>
+   <h1 ><%=roteiro.titulo.toUpperCase()%></h1>
+    
+    <div class="fb-share-button button mb-3" 
     data-href="http:/dominio/index/roteiro/<%=roteiro.id%>" 
     data-layout="button"
    >
@@ -9,10 +13,8 @@
  <a href="https://twitter.com/share?url=http:/dominio/index/roteiro/<%=roteiro.id%>&text=Olha que viagem legal <%=roteiro.titulo%>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter"><img src="/icones/twitter.png"></a>
 
     <p><%=roteiro.likes  %>  Like(s)</p>
-  
 
 
-</row>
 <div class="row">
   <div class="col-sm-12 col-lg-4 ">
     <label><strong>Estilo do Roteiro</strong></label>

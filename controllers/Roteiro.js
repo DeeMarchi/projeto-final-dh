@@ -101,6 +101,11 @@ const roteiroController = {
                         }],
                     },
                     {
+                        model: Usuario,
+                        as: 'usuario',
+                        required: true,
+                    },
+                    {
                         model: Estilo,
                         as: 'estilo',
                         required: true,
@@ -128,9 +133,7 @@ const roteiroController = {
                 res.status(404);
                 return next();
             }
-            roteiro.dia.forEach(element => {
-                console.log(element.moeda.id)
-            })
+           
             
             res.render('ver-roteiro', {
                 titulo: `Roteiro ${roteiro.titulo}`,
