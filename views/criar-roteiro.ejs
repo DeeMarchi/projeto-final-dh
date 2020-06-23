@@ -23,7 +23,7 @@
           <div class="form-group row">
             <div class=" col-sm-4 col-lg-6 col-md-5 float-left">
               <label><strong>Relatos do dia:</strong></label>
-              <textarea type="text" name="relato1" class="form-control" row="5" placeholder="Descreva como foram os passeios realizados neste dia"></textarea>
+              <textarea type="text" name="relato1" class="form-control" row="5" placeholder="Descreva como foram os passeios realizados neste dia" required></textarea>
               <sub class="form-text text-muted"></s>
             </div>
             <div class="col-sm-4 col-lg-6 col-md-6 float-left">
@@ -37,7 +37,8 @@
               data-random-color="true"
               data-max-tags="5"
               name="locais1"
-              placeholder="Locais que visitou neste dia">
+              placeholder="Locais que visitou neste dia"
+              required>
                         <sub class="form-text text-muted">Locais que visitou neste dia</s>
             </div>
           </div>
@@ -55,7 +56,7 @@
                       <%}%>
                   </select>
                 </div>
-                <input type="number" class="form-control" name="valor1" aria-label="Amount (to the nearest dollar)">
+                <input type="number" class="form-control" name="valor1" aria-label="Amount (to the nearest dollar)" required>
                 <div class="input-group-append">
                   <span class="input-group-text">.00</span>
                 </div>
