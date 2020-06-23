@@ -1,4 +1,4 @@
-<li class="list-group-item">
+<li class="list-group-item" id="comentarios">
   <article class="row">
     <div class="col-xs-2 col-md-1">
       <img src=<%=comentario.usuario.imagem_url  %>  class="img-circle img-fluid  img-responsive" alt="">
@@ -12,23 +12,69 @@
       <div class="comment-text">
         <%=comentario.conteudo%>
       </div>
-      <form action="/index/curtir-comentario/<%=comentario.id%>" method="POST">
-      <div class="action">
+      <form action="/index/curtir-comentario/<%=comentario.id%>" method="POST" id="myForm<%=comentario.id%>">
+        <script>
+
+this['myForm<%=comentario.id%>' ]   =document.getElementById('myForm<%=comentario.id%>');
+          
+this['myForm<%=comentario.id%>' ].addEventListener('submit',function(e){
+          
+            e.preventDefault();
+          
+            this['formData<%=comentario.id%>' ] = new FormData(this);
+
+
+          
+          fetch('/index/curtir-comentario/<%=comentario.id%>',{
+          method:'post',
+          body:this['formData<%=comentario.id%>' ]
+          
+          
+          }).then(function (response){
+
+            response.text().then(function (text) {
+  // do something with the text response 
+if(text ==='Like<%=comentario.id%>'){
+  document.getElementById("btnLike<%=comentario.id%>").src = "/icones/like.svg";
+  document.getElementById("btnLike<%=comentario.id%>").id='btnDeslike<%=comentario.id%>'
+ 
+
+}
+ if(text ==='Deslike<%=comentario.id%>'){
+
+  document.getElementById("btnDeslike<%=comentario.id%>").src = "/icones/gostar.svg";
+  document.getElementById("btnDeslike<%=comentario.id%>").id='btnLike<%=comentario.id%>'
+ 
+
+}
+
+
+});
+
+            
+          }).then(function (message){
+console.log(message)
+          })
+          
+          
+          })
+          
+          </script>
+      <div class="action" >
         <% index = comentario.curtidas.findIndex(x => x.usuario_id ===  usuario.id  ) %>
 
-
-
         <%if (index ==0) {%>
-          <button type="submit" class="btn-xs rounded btn-primary  img-fluid" title="Like">
-            <img class ="icones-comentarios" src="/icones/like.svg">
+          <button type="submit" id='btnCurtir' class="btn-xs rounded btn-primary  img-fluid" title="Like">
+            <img id='btnDeslike<%=comentario.id%>' class ="icones-comentarios" src="/icones/like.svg">
           </button>
         <% }else{ %> 
-          <button type="submit" class="btn-xs rounded btn-primary  img-fluid" title="Like">
-            <img class ="icones-comentarios" src="/icones/gostar.svg">
+          <button type="submit" id='btnCurtir' class="btn-xs rounded btn-primary  img-fluid" title="Like">
+            <img id='btnLike<%=comentario.id%>' class ="icones-comentarios" src="/icones/gostar.svg">
           </button>
           
         <% } %> 
-        
+
+
       </div>
       </form>
     </div>
