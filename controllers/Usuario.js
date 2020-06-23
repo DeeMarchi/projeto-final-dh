@@ -22,6 +22,8 @@ const UsuarioController = {
             idPerfil
         } = res.locals;
 
+        console.log(idPerfil);
+
         if (res.statusCode === 200) {
             const usuario = await Usuario.findByPk(idPerfil, {
                 include: [{
@@ -40,7 +42,7 @@ const UsuarioController = {
                         where: {
                             ativo: true,
                         },
-                        required: false,
+                        required: true,
                     },
                 }, ],
             });

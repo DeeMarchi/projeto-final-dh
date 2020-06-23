@@ -4,10 +4,10 @@
       <label><strong>Qual foi o estilo da sua viagem?</strong></label>
       <select class="form-control custom select"  name="selectEstilodaViagem">
          <% if(typeof(estilosViagem) != undefined ){ %>
-                    <% estilosViagem.forEach( estilo => { %>
-                      <option value=<%=estilo.id%> class="list-group-item"><%=estilo.nome%></option>
-                      <% }) %>
-                    <%}%>
+          <% estilosViagem.forEach( estilo => { %>
+            <option value=<%=estilo.id%> class="list-group-item"><%=estilo.nome%></option>
+          <% }) %>
+        <%}%>
       </select>
     </div>
     <div class="col-sm-12 col-lg-4">
@@ -52,13 +52,3 @@
       </div>
     </div>
   </div>
-
-
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-        $(".add-button").on("click", function () {
-          roteiroCampo(moedaViagem);
-        });
-    });
-</script>
