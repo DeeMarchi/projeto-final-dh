@@ -46,13 +46,20 @@ const IndexController = {
     },
 
     pesquisa: (req, res) => {
-        const { usuariosBusca } = res.locals;
-        const { roteiros } = res.locals;
-
-        res.render('Pesquisa', {
+        res.render('pesquisa', {
             titulo: 'Pesquisa',
-            usuariosBusca,
-            roteiros,
+        });
+    },
+
+    pesquisaUsuarios: (req, res) => {
+        res.render('pesquisa-usuarios', {
+            titulo: 'Pesquisa | Usuários',
+        });
+    },
+
+    pesquisaRoteiros: (req, res) => {
+        res.render('pesquisa-roteiros', {
+            titulo: 'Pesquisa | Roteiros',
         });
     },
 

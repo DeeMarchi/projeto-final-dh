@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <%- include('./partials/head') %>
+  </head>
+
+  <body>
+    <%- include('./partials/header') %>
+    <main>
+      <div class="container my-5">
+        <h1 class="text-center text-uppercase">Busca de roteiros</h1>
+        <%- include('./partials/pag-pesquisa/form-roteiros') %>
+        <section class="mb-5">
+          <h2 class="text-center">Roteiros</h2>
+          <% if (typeof(roteiros) !== 'undefined') { %> 
+            <% if (roteiros.length > 0) { %>
+              <% roteiros.forEach(roteiro => { %>
+                <%- include('./partials/pag-perfil/roteiro-visualizacao', { roteiro }) %>
+              <% }) %>
+            <% } else { %>
+              <h3 class="text-center">Nenhum resultado</h3>
+            <% } %>
+          <% } %>
+        </section>
+      </div>
+    </main>
+    <%- include('./partials/footer') %>
+    <%- include('./partials/scripts-body') %>
+  </body>
+
+</html>

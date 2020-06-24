@@ -60,15 +60,14 @@ const UsuarioController = {
         next();
     },
 
-    buscar: async (req, res, next) => {
+    buscar: async (req, res) => {
         const {
-            usuariosCheck,
             nomesParaBuscar
         } = req.body;
         const listaNomes = nomesParaBuscar.split(' ');
         let usuarios;
 
-        if (nomesParaBuscar && usuariosCheck) {
+        if (nomesParaBuscar) {
             /* A linha abaixo basicamente serve como um 'OR' com todas as palavras recebidas como parâmetro */
             const nomesRegex = listaNomes.join('|');
 
@@ -99,8 +98,10 @@ const UsuarioController = {
             usuarios = [];
         }
 
-        res.locals.usuariosBusca = usuarios;
-        next();
+        res.render('pesquisa-usuarios', {
+            titulo: 'Pesquisa | Usuários',
+            usuariosBusca: usuarios,
+        });
     },
 
     editar: async (req, res, next) => {

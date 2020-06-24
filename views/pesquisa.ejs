@@ -8,34 +8,19 @@
   <body>
     <%- include('./partials/header') %>
     <main>
-      <div class="container my-5">
-        <h1 class="text-center text-uppercase">Busca filtrada</h1>
-        <%- include('./partials/pag-pesquisa/form-busca') %>
-        <section class="mb-5">
-          <h2 class="text-center">Roteiros</h2>
-          <% if (typeof(roteiros) !== 'undefined') { %> 
-            <% if (roteiros.length > 0) { %>
-              <% roteiros.forEach(roteiro => { %>
-                <%- include('./partials/pag-perfil/roteiro-visualizacao', { roteiro }) %>
-              <% }) %>
-            <% } else { %>
-              <h3 class="text-center">Nenhum resultado</h3>
-            <% } %>
-          <% } %>
-        </section>
-        <section class="my-5">
-          <h2 class="text-center">Usuários</h2>
-          <% if (typeof(usuariosBusca) !== 'undefined') { %>
-            <div class="row justify-content-center">
-              <% if (usuariosBusca.length > 0) { %>
-                <% usuariosBusca.forEach(usuarioBusca => { %>
-                  <%- include('./partials/pag-pesquisa/card-usuario', { usuarioBusca }) %> 
-                <% }); %>
-              <% } else { %>
-                <h3>Nenhum resultado</h3>
-              <% } %> 
-            </div>
-          <% } %> 
+      <div class="container my-5 text-center">
+        <h1>Buscar por</h1>
+        <section>
+          <article>
+            <h3>
+              <a class="text-dark" href="/index/pesquisa/usuarios">Usuários</a>
+            </h3>
+          </article>
+          <article>
+            <h3>
+              <a class="text-dark" href="/index/pesquisa/roteiros">Roteiros</a>
+            </h3>
+          </article>
         </section>
       </div>
     </main>

@@ -175,13 +175,12 @@ const roteiroController = {
         return res.redirect(`/index/perfil/${usuario.id}/editar`);
     },
 
-    buscarRoteiros: async (req, res, next) => {
-        console.log(req.body);
-        const { roteirosCheck, roteirosParaBuscar } = req.body;
+    buscarRoteiros: async (req, res) => {
+        const { roteirosParaBuscar } = req.body;
         const listaRoteiros = roteirosParaBuscar.split(' ');
         let roteiros;
 
-        if (roteirosParaBuscar && roteirosCheck) {
+        if (roteirosParaBuscar) {
             /* A linha abaixo basicamente serve como um 'OR' com todas as palavras recebidas como parâmetro */
             const nomesRegex = listaRoteiros.join('|');
 
@@ -202,8 +201,10 @@ const roteiroController = {
             roteiros = [];
         }
 
-        res.locals.roteiros = roteiros;
-        next();
+        res.render('pesquisa-roteiros', {
+            titulo: 'Pesquisa | Roteiros',
+            roteiros,
+        });
     },
 };
 

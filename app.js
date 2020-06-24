@@ -11,6 +11,7 @@ const indexRouter = require('./routes/index');
 const usuarioRouter = require('./routes/usuario');
 const curtidasRouter = require('./routes/curtidas');
 const newsletterRouter = require('./routes/newsletter');
+const pesquisaRouter = require('./routes/pesquisa');
 
 /* Middlewares customizados do projeto */
 const autenticado = require('./middlewares/autenticado');
@@ -43,12 +44,12 @@ app.use((req, res, next) => {
     next();
 });
 
-
 app.use('/', authRouter);
 app.use('/index', autenticado, indexRouter);
 app.use('/index/perfil/:id', autenticado, tratarIdPerfil, usuarioRouter);
 app.use('/curtir', autenticado, curtidasRouter);
 app.use('/newsletter', newsletterRouter);
+app.use('/index/pesquisa', pesquisaRouter);
 
 moedasInit.guardarMoedasAPI();
 

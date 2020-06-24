@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <%- include('./partials/head') %>
+  </head>
+
+  <body>
+    <%- include('./partials/header') %>
+    <main>
+      <div class="container my-5">
+        <h1 class="text-center text-uppercase">Busca de usuários</h1>
+        <%- include('./partials/pag-pesquisa/form-usuarios') %>
+        <section class="my-5">
+          <h2 class="text-center">Usuários</h2>
+          <% if (typeof(usuariosBusca) !== 'undefined') { %>
+            <div class="row justify-content-center">
+              <% if (usuariosBusca.length > 0) { %>
+                <% usuariosBusca.forEach(usuarioBusca => { %>
+                  <%- include('./partials/pag-pesquisa/card-usuario', { usuarioBusca }) %> 
+                <% }); %>
+              <% } else { %>
+                <h3>Nenhum resultado</h3>
+              <% } %> 
+            </div>
+          <% } %> 
+        </section>
+      </div>
+    </main>
+    <%- include('./partials/footer') %>
+    <%- include('./partials/scripts-body') %>
+  </body>
+
+</html>
