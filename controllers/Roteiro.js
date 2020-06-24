@@ -72,7 +72,6 @@ const roteiroController = {
                 });
             }
         }
-        console.log(roteiro.id);
         
         res.redirect(`/index/roteiro/${roteiro.id}`);
     },
