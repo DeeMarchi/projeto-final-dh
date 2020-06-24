@@ -11,11 +11,13 @@
       <div class="container my-5">
         
         <%- include('./partials/pag-perfil/secao-info') %>
+        <hr>
         <% if (usuarioPagina.id === usuario.id) { %>
           <%- include('./partials/pag-perfil/btn-editar') %>
         <% } %>
         <%- include('./partials/pag-perfil/resumo') %>
         
+        <hr>
         <div class="row">
           <div class="col">
             <section class="my-5">
@@ -27,7 +29,8 @@
               <% } else { %>
                 <h4 class="text-left">Nenhum roteiro cadastrado</h3>
               <% } %>
-              </section>          </div>
+            </section>          
+          </div>
           <div class="col">
             <section class="my-5 ">
               <h2 class="text-left my-4">Roteiros curtidos</h2>
@@ -41,18 +44,9 @@
               <% } else { %>
                 <h4 class="text-left">Nenhum roteiro curtido</h3>
               <% } %> 
-            </section>          </div>
+            </section>          
+          </div>
         </div>
-
-
-
-
-
-
-
-        
-        
-       
       </div>
     </main>
     <%- include('./partials/footer') %> 

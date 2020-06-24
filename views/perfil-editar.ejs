@@ -17,12 +17,8 @@
               <% }); %>
             </ul>
           <% } %>
-          <section class="my-5">
-
           <%- include('./partials/pag-perfil/secao-info') %>
-
-      
-
+          <hr>
           <div class="form-group my-3 d-flex justify-content-center">
             <div>
               <label for="novo-avatar">Adicione uma foto</label>
@@ -34,25 +30,17 @@
             <button class="btn rounded-pill btn-padrao mt-4" type="submit"><strong>Salvar</strong></button>
           </div>
         </form>
-        <div class="row">
-          <div class="col-6">
-            <section class="my-5 ">
-              <h2 class="text-left my-4">Meus roteiros</h2>
-              <% if (usuarioRoteiros.length > 0) { %>
-                <% usuarioRoteiros.forEach(roteiro => { %>
-                  <%- include('./partials/pag-perfil/roteiro-edicao', { roteiro }) %>
-                <% }) %>
-              <% } else { %>
-                <h4 class="text-left">Nenhum roteiro cadastrado</h3>
-              <% } %>
-              </section>          </div>
-        
-        </div>
-
-
-
-       
-        
+        <hr>
+        <section class="my-5">
+          <h2 class="text-left my-4">Meus roteiros</h2>
+          <% if (usuarioRoteiros.length > 0) { %>
+            <% usuarioRoteiros.forEach(roteiro => { %>
+              <%- include('./partials/pag-perfil/roteiro-edicao', { roteiro }) %>
+            <% }) %>
+          <% } else { %>
+            <h4 class="text-left">Nenhum roteiro cadastrado</h3>
+          <% } %>
+        </section>
       </div>
     </main>
     <%- include('./partials/footer') %> 
