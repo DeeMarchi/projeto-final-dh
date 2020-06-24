@@ -64,7 +64,6 @@ const comentarioController = {
         }
 
 
-        //res.redirect('back')
 
 
 
