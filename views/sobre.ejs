@@ -36,6 +36,9 @@
             </div>
             <p class="m-0 p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sed quas eligendi voluptatibus placeat perferendis laudantium quisquam, quaerat dolores blanditiis, ipsum animi quos ratione deserunt eaque quis maxime. Fuga, labore!</p>
           </article>
+          <% membros.forEach(membro => { %>
+            <%- include('./partials/pag-sobre/card-membro', { membro }) %>
+          <% }); %>
         </div>
       </section>
     </main>

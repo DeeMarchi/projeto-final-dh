@@ -1,0 +1,18 @@
+<article class="rounded rounded-lg mb-5 card">
+  <div class="card-header">
+    <h4 class="py-2 m-0 text-uppercase">
+      <strong><%= membro.nome %></strong>
+    </h4>
+  </div>
+  <div class="card-body">
+    <% if (membro.hasOwnProperty('contato')) { %>
+      <h5>Contato</h5>
+      <ul>
+        <% for (const chave in membro.contato) { %>
+          <li><%= chave %>: <%= membro.contato[chave]%></li>
+        <% } %>
+      </ul>
+    <% } %>
+    <p class="m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sed quas eligendi voluptatibus placeat perferendis laudantium quisquam, quaerat dolores blanditiis, ipsum animi quos ratione deserunt eaque quis maxime. Fuga, labore!</p>
+  </div>
+</article>

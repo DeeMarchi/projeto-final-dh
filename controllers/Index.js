@@ -40,8 +40,22 @@ const IndexController = {
     },
 
     sobre: (req, res) => {
+        const membros = [
+            {
+                nome: 'Denner Marchi',
+                contato: {
+                    gitHub: 'https://github.com/DeeMarchi',
+                    discord: 'DeeMarchi#8073',
+                },
+                contribuicoes: [
+                    
+                ],
+            },
+        ];
+
         res.render('sobre', {
             titulo: 'Sobre',
+            membros,
         });
     },
 
