@@ -14,16 +14,16 @@
     </div>
   
   </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-4">
-      <h3> <span class="badge badge-secondary card-resumo-roteiro"><%= roteiro.qntd_dias %> Dias</span></h3>
-    </div>
-    <div class="col-sm-12 col-md-4">
-      <p class="my-1 my-lg-auto text-center">Estilo da viagem: <%= roteiro.estilo.nome %></p>
-    </div>
-    <div class="col-sm-12 col-md-4">
-      <p class="my-1 my-lg-auto text-center">Data de início: <%= moment(roteiro.data_inicio).format('L') %> </p>
-    </div>
+  <div>
+    <h3> 
+      <span class="badge badge-secondary card-resumo-roteiro"><%= roteiro.qntd_dias %> <%= roteiro.qntd_dias > 1 ? "Dias" : "Dia" %></span>
+    </h3>
+  </div>
+  <div>
+    <p class="my-1 my-lg-auto">Estilo da viagem: <%= roteiro.estilo.nome %></p>
+  </div>
+  <div>
+    <p class="my-1 my-lg-auto">Data de início: <%= moment(roteiro.data_inicio).format('L') %> </p>
   </div>
   
 </article>

@@ -65,13 +65,15 @@ const roteiroController = {
             });
 
             localSeparado = req.body['locais' + i].split(",");
-            localSeparado.forEach(async element => {
+            for (const local of localSeparado) {
                 await Local.create({
-                    nome: element,
+                    nome: local,
                     dia_id: dia.dataValues.id
                 });
-            });
+            }
         }
+        console.log(roteiro.id);
+        
         res.redirect(`/index/roteiro/${roteiro.id}`);
     },
 
