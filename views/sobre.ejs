@@ -28,14 +28,6 @@
           <h2 class="text-uppercase mb-3">
             <strong>Nossa equipe</strong>
           </h2>
-          <article class="rounded rounded-lg mb-5 card">
-            <div class="card-header">
-              <h4 class="py-2 m-0">
-                <strong>Membro #</strong>
-              </h4>
-            </div>
-            <p class="m-0 p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sed quas eligendi voluptatibus placeat perferendis laudantium quisquam, quaerat dolores blanditiis, ipsum animi quos ratione deserunt eaque quis maxime. Fuga, labore!</p>
-          </article>
           <% membros.forEach(membro => { %>
             <%- include('./partials/pag-sobre/card-membro', { membro }) %>
           <% }); %>

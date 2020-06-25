@@ -9,10 +9,10 @@
       <h5>Contato</h5>
       <ul>
         <% for (const chave in membro.contato) { %>
-          <li><%= chave %>: <%= membro.contato[chave]%></li>
+          <li><%= chave %>: <strong><%= membro.contato[chave]%></strong></li>
         <% } %>
       </ul>
     <% } %>
-    <p class="m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sed quas eligendi voluptatibus placeat perferendis laudantium quisquam, quaerat dolores blanditiis, ipsum animi quos ratione deserunt eaque quis maxime. Fuga, labore!</p>
+    <p class="m-0"><%= membro.descricao%></p>
   </div>
 </article>

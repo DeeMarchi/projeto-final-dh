@@ -46,10 +46,18 @@ const IndexController = {
                 contato: {
                     gitHub: 'https://github.com/DeeMarchi',
                     discord: 'DeeMarchi#8073',
+                    linkedIn: 'https://www.linkedin.com/in/denner-marchi-33a713176/',
                 },
-                contribuicoes: [
-                    
-                ],
+                descricao: 'Gosto de programação de baixo nível e também acho interessante segurança da informação.',
+            },
+            {
+                nome: 'Oto Campos',
+                contato: {
+                    gitHub: 'https://github.com/otocampos',
+                    discord: 'otocampos#0386',
+                    linkedIn: 'https://www.linkedin.com/in/oto-campos/',
+                },
+                descricao: 'Apaixonado por tecnologia e viagens. Dedico este projeto primeiramente a Jesus, meus familiares e minha Noiva.'
             },
         ];
 
