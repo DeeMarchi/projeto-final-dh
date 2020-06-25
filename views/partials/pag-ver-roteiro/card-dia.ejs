@@ -14,8 +14,7 @@
         <div class="row">
           <div class="col-sm-4 col-lg-6 col-md-8 float-left">
             <label class="col-form-label"><strong>Gastos do dia:</strong></label>
-           
-            <p><%=dia.gasto%> <abbr title=<%=dia.moeda.nome%>><%=dia.moeda.simbolo%></abbr></p>
+            <p><%=dia.gasto%> <abbr title="<%=dia.moeda.nome%>"><%=dia.moeda.simbolo%></abbr></p>
           </div>
         </div>
       </article>
@@ -24,12 +23,9 @@
         <ul class="list-group">
           <%dia.local.forEach(local => {%>
             <li class="list-group-item"><%=local.nome %> </li>
-
          <% });  %> 
-         
         </ul>
       </article>
     </div>
   </div>
 </section>
-
