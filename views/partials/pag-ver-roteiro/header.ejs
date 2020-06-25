@@ -5,7 +5,7 @@
 </a><strong><p><%=roteiro.usuario.apelido%></p></strong>
 
 </div>
-   <h1 ><%=roteiro.titulo.toUpperCase()%></h1>
+   <h1 class="text-uppercase"><%=roteiro.titulo %></h1>
     
     <div class="fb-share-button button mb-3" 
     data-href="http:/dominio/index/roteiro/<%=roteiro.id%>" 
@@ -17,20 +17,18 @@
     <p><%=roteiro.likes  %>  Like(s)</p>
 
 
-<div class="row">
-  <div class="col-sm-12 col-lg-4 ">
-    <label><strong>Estilo do Roteiro</strong></label>
+  <div>
+    <strong>Estilo do Roteiro</strong>
     <p><i class="icon-user icon-white"></i><%=roteiro.estilo.nome%> </p><i class="icon-search"></i>
   </div>
-  <div class="col-sm-12 col-lg-4">
-    <label><strong>Data de início da viagem</strong></label>
+  <div>
+    <strong>Data de início da viagem</strong>
     <p><%=moment(roteiro.data_inicio).format('DD/MM/YYYY')%></p>
   </div>
-  <div class="col-sm-12 col-lg-4">
-    <label><strong>Total de Dias</strong></label>
+  <div>
+    <strong>Total de Dias</strong>
     <p><%=roteiro.qntd_dias%></p>
   </div>
-</div>
 
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
