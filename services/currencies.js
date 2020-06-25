@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 const api = axios.create({
-    baseURL: 'https://openexchangerates.org/api/',
+    baseURL: 'https://economia.awesomeapi.com.br/json',
     timeout: 5000,
 });
 
